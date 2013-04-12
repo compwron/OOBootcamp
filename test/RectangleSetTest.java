@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class RectangleSetTest {
     @Test
-    public void shouldFindSumOfRectangleAreasForOneRectangle(){
+    public void shouldFindSumOfRectangleAreasForOneRectangle() {
         ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
         rectangles.add(new Rectangle(1, 2));
         RectangleSet rectangleSet = new RectangleSet(rectangles);
@@ -15,7 +15,7 @@ public class RectangleSetTest {
     }
 
     @Test
-    public void shouldFindSumOfRectangleAreasForMoreThanOneRectangle(){
+    public void shouldFindSumOfRectangleAreasForMoreThanOneRectangle() {
         ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
         rectangles.add(new Rectangle(1, 2));
         rectangles.add(new Rectangle(10, 3));

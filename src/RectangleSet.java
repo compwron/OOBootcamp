@@ -9,7 +9,7 @@ public class RectangleSet {
 
     public int totalArea() {
         int totalArea = 0;
-        for (Rectangle rectangle : rectangles){
+        for (Rectangle rectangle : rectangles) {
             totalArea += rectangle.getArea();
         }
         return totalArea;
