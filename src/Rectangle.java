@@ -1,9 +1,10 @@
 import java.awt.*;
+import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 public class Rectangle {
     private ArrayList<Point> vertices = new ArrayList<Point>();
-    ArrayList<RectangleLine> borders = new ArrayList<RectangleLine>();
+    ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
     private int area;
 
     // TODO: refactor away this constructor
@@ -18,10 +19,10 @@ public class Rectangle {
     }
 
     private void setBorderLines(Point point, Point point1, Point point2, Point point3) {
-        borders.add(new RectangleLine(point, point1));
-        borders.add(new RectangleLine(point1, point2));
-        borders.add(new RectangleLine(point2, point3));
-        borders.add(new RectangleLine(point3, point));
+        borders.add(new Line2D.Float(point, point1));
+        borders.add(new Line2D.Float(point1, point2));
+        borders.add(new Line2D.Float(point2, point3));
+        borders.add(new Line2D.Float(point3, point));
     }
 
     private void setVertices(Point... points) {
@@ -40,8 +41,8 @@ public class Rectangle {
                 return true;
             }
         }
-        for (RectangleLine line : borders){
-            if (line.contains(point)){
+        for (Line2D line : borders){
+            if (line.ptLineDist(point) == 0){
                 return true;
             }
         }
