@@ -1,11 +1,17 @@
 import java.util.ArrayList;
 
 public class RectangleSet {
-    public RectangleSet(ArrayList<Rectangle> rectangles) {
+    private final ArrayList<Rectangle> rectangles;
 
+    public RectangleSet(ArrayList<Rectangle> rectangles) {
+        this.rectangles = rectangles;
     }
 
     public int totalArea() {
-        return 0;
+        int totalArea = 0;
+        for (Rectangle rectangle : rectangles){
+            totalArea += rectangle.getArea();
+        }
+        return totalArea;
     }
 }
