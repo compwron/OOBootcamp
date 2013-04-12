@@ -36,4 +36,9 @@ public class RectangleTest {
     public void rectangleContainsPointOnOneOfItsEdges() {
         assertTrue(rectangle.contains(new Point(1, 1)));
     }
+
+    @Test
+    public void rectangleDoesNotContainPointOnOneOfTheLinesThatCompriseItsEdgesButNotInRectangle() {
+        assertFalse(rectangle.contains(new Point(1, 3)));
+    }
 }
