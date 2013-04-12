@@ -41,11 +41,18 @@ public class Rectangle {
                 return true;
             }
         }
-        for (Line2D line : borders){
-            if (line.ptLineDist(point) == 0){
+        for (Line2D line : borders) {
+            if (line.ptLineDist(point) == 0) {
                 return true;
             }
         }
+        if (pointIsOnSameSideOf(borders.get(0), borders.get(2), point) && pointIsOnSameSideOf(borders.get(1), borders.get(3), point)){
+            return true;
+        }
         return false;
+    }
+
+    private boolean pointIsOnSameSideOf(Line2D.Float line1, Line2D.Float line2, Point point) {
+        return line1.relativeCCW(point) == line2.relativeCCW(point);
     }
 }

@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class RectangleTest {
 
     @Before
     public void setUp() {
-        rectangle = new Rectangle(new Point(0, 0), new Point(0, 1), new Point(2, 1), new Point(2, 0));
+        rectangle = new Rectangle(new Point(0, 0), new Point(0, 2), new Point(3, 2), new Point(3, 0));
     }
 
     @Test
@@ -24,7 +25,7 @@ public class RectangleTest {
 
     @Test
     public void rectangleDoesNotContainPointOutsideItself() {
-        assertFalse(rectangle.contains(new Point(3, 3)));
+        assertFalse(rectangle.contains(new Point(5, 5)));
     }
 
     @Test
@@ -34,11 +35,16 @@ public class RectangleTest {
 
     @Test
     public void rectangleContainsPointOnOneOfItsEdges() {
-        assertTrue(rectangle.contains(new Point(1, 1)));
+        assertTrue(rectangle.contains(new Point(1, 2)));
     }
 
     @Test
     public void rectangleDoesNotContainPointOnOneOfTheLinesThatCompriseItsEdgesButNotInRectangle() {
         assertFalse(rectangle.contains(new Point(1, 3)));
+    }
+
+    @Test
+    public void rectangleContainsPointInsideOfItself(){
+        Assert.assertTrue(rectangle.contains(new Point(2, 1)));
     }
 }
