@@ -31,4 +31,9 @@ public class RectangleTest {
     public void rectangleContainsItsOwnVertex() {
         assertTrue(rectangle.contains(new Point(0, 0)));
     }
+
+    @Test
+    public void rectangleContainsPointOnOneOfItsEdges() {
+        assertTrue(rectangle.contains(new Point(1, 1)));
+    }
 }
