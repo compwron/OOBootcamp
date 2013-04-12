@@ -20,8 +20,7 @@ public class RectangleTest {
 
     @Test
     public void rectangleKnowsItsArea() {
-        Rectangle rectangle = new Rectangle(1, 2);
-        assertThat(rectangle.getArea(), is(2));
+        assertThat(rectangle.getArea(), is(6.0));
     }
 
     @Test

@@ -4,18 +4,21 @@ import java.util.ArrayList;
 
 public class Rectangle {
     private ArrayList<Point> vertices = new ArrayList<Point>();
-    ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
-    private int area;
-
-    // TODO: refactor away this constructor
-    public Rectangle(int length, int width) {
-        this.area = length * width;
-    }
+    private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
+    private double area;
 
     public Rectangle(Point point, Point point1, Point point2, Point point3) {
         setVertices(point, point1, point2, point3);
         setBorderLines(point, point1, point2, point3);
+        setArea(point, point1, point2, point3);
+    }
 
+    private void setArea(Point point, Point point1, Point point2, Point point3) {
+        area = distanceBetween(point, point1) * distanceBetween(point1, point2);
+    }
+
+    private double distanceBetween(Point point, Point point1){
+        return Math.sqrt(Math.pow((point.getX() - point1.getX()), 2) + Math.pow((point1.getY() - point.getY()), 2));
     }
 
     private void setBorderLines(Point point, Point point1, Point point2, Point point3) {
@@ -31,7 +34,7 @@ public class Rectangle {
         }
     }
 
-    public int getArea() {
+    public double getArea() {
         return area;
     }
 
