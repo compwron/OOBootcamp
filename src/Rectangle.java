@@ -42,7 +42,7 @@ public class Rectangle {
             }
         }
         for (Line2D line : borders) {
-            if (line.ptLineDist(point) == 0) {
+            if (pointIsWithinEndpointsOf(line, point)) {
                 return true;
             }
         }
@@ -50,6 +50,12 @@ public class Rectangle {
             return true;
         }
         return false;
+    }
+
+    protected boolean pointIsWithinEndpointsOf(Line2D line, Point point) {
+        boolean pointXisWithinLineX = point.getX() >= line.getX1() && point.getX() <= line.getX2();
+        boolean pointYIsWithinLineY = point.getY() >= line.getX1() && point.getY() <= line.getY2();
+        return line.ptLineDist(point) == 0 && pointXisWithinLineX && pointYIsWithinLineY;
     }
 
     private boolean pointIsOnSameSideOf(Line2D.Float line1, Line2D.Float line2, Point point) {

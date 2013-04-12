@@ -3,6 +3,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
@@ -46,5 +47,20 @@ public class RectangleTest {
     @Test
     public void rectangleContainsPointInsideOfItself(){
         Assert.assertTrue(rectangle.contains(new Point(2, 1)));
+    }
+
+    @Test
+    public void rectangleDoesNotContainPointOutsideOfItselfOnExtensionOfBorderLine(){
+        Assert.assertFalse(rectangle.contains(new Point(4, 0)));
+    }
+
+    @Test
+    public void pointOnLineBeyondLineEdgeShouldNotBeOnLine(){
+        assertFalse(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0,0), new Point(1,0)), new Point(2,0)));
+    }
+
+    @Test
+    public void pointOnLineAndNotBeyondLineEdgeShouldBeOnLine(){
+        assertTrue(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0,0), new Point(2,0)), new Point(1,0)));
     }
 }
