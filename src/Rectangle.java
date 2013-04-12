@@ -8,10 +8,10 @@ public class Rectangle {
 
     public Rectangle(Point point, Point point1, Point point2, Point point3) {
         setBorderLines(point, point1, point2, point3);
-        setArea(point, point1, point2, point3);
+        setArea(point, point1, point2);
     }
 
-    private void setArea(Point point, Point point1, Point point2, Point point3) {
+    private void setArea(Point point, Point point1, Point point2) {
         area = distanceBetween(point, point1) * distanceBetween(point1, point2);
     }
 
