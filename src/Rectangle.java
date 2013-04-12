@@ -3,12 +3,10 @@ import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
 public class Rectangle {
-    private ArrayList<Point> vertices = new ArrayList<Point>();
     private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
     private double area;
 
     public Rectangle(Point point, Point point1, Point point2, Point point3) {
-        setVertices(point, point1, point2, point3);
         setBorderLines(point, point1, point2, point3);
         setArea(point, point1, point2, point3);
     }
@@ -28,22 +26,11 @@ public class Rectangle {
         borders.add(new Line2D.Float(point3, point));
     }
 
-    private void setVertices(Point... points) {
-        for (Point point : points) {
-            this.vertices.add(point);
-        }
-    }
-
     public double getArea() {
         return area;
     }
 
     public boolean contains(Point point) {
-        for (Point vertex : vertices) {
-            if (vertex.equals(point)) {
-                return true;
-            }
-        }
         for (Line2D line : borders) {
             if (pointIsWithinEndpointsOf(line, point)) {
                 return true;
