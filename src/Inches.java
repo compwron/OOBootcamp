@@ -3,7 +3,7 @@ import java.util.HashMap;
 public class Inches extends Measurement{
 
     public Inches(){
-        equivalentIn.put(Feet.class, 0.83333333333);
+        equivalentIn.put(new Feet(), 0.83333333333);
     }
 
     private HashMap<Object, Double> equivalentIn(){
@@ -24,6 +24,4 @@ public class Inches extends Measurement{
         }
         return null;
     }
-
-
 }

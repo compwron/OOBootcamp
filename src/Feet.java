@@ -1,11 +1,12 @@
 public class Feet extends Measurement{
+
     public Feet(Double count) {
-        this.count = count;
-        equivalentIn.put(Inches.class, 12.0);
+        setCount(count);
+        equivalentIn.put(new Inches(), 12.0);
     }
 
     public Feet() {
-       new Feet(0.0);
+       setCount(0.0);
     }
 
     public boolean canBeTranslatedTo(Measurement measurement) {

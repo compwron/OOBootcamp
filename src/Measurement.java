@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
-public class Measurement {
+public abstract class Measurement {
 
-    Double count = 0.0;
+    private Double count;
 
     public Double getCount() {
         return count;
@@ -12,17 +12,20 @@ public class Measurement {
         this.count = count;
     }
 
-    HashMap<Object, Double> equivalentIn = new HashMap<Object, Double>();
+    HashMap<Measurement, Double> equivalentIn = new HashMap<Measurement, Double>();
 
     public Measurement translateTo(Measurement measurement) {
+        if(canBeTranslatedTo(measurement)){
+            Double equivalentCount = equivalentCountIn(measurement);
+            measurement.setCount(equivalentCount);
+            return measurement;
+        }
         return null;
     }
 
-    public boolean canBeTranslatedTo(Measurement measurement) {
-        return false;
-    }
+    public abstract boolean canBeTranslatedTo(Measurement measurement);
 
     Double equivalentCountIn(Measurement measurement) {
-        return (count * equivalentIn.get(measurement.getClass()));
+        return count * equivalentIn.get(measurement);
     }
 }
