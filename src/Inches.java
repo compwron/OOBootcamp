@@ -25,7 +25,5 @@ public class Inches extends Measurement{
         return null;
     }
 
-    Double equivalentCountIn(Measurement measurement) {
-        return (count * equivalentIn.get(measurement.getClass()));
-    }
+
 }

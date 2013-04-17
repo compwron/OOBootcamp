@@ -17,4 +17,12 @@ public class Measurement {
     public Measurement translateTo(Measurement measurement) {
         return null;
     }
+
+    public boolean canBeTranslatedTo(Measurement measurement) {
+        return false;
+    }
+
+    Double equivalentCountIn(Measurement measurement) {
+        return (count * equivalentIn.get(measurement.getClass()));
+    }
 }

@@ -16,5 +16,9 @@ public class FeetTest {
         assertThat(feet.count, is(0.0));
     }
 
-
+    @Test
+    public void oneFootShouldTranslateTo12Inches(){
+        Feet feet = new Feet(1.0);
+        assertThat(feet.translateTo(new Inches()).count, is(12.0));
+    }
 }
