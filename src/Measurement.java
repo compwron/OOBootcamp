@@ -12,7 +12,11 @@ public abstract class Measurement {
         this.count = count;
     }
 
-    HashMap<Measurement, Double> equivalentIn = new HashMap<Measurement, Double>();
+    private HashMap<Class, Double> equivalentIn = new HashMap<Class, Double>();
+
+    public void addEquivalent(Measurement measurement, Double translation){
+        equivalentIn.put(measurement.getClass(), translation);
+    }
 
     public Measurement translateTo(Measurement measurement) {
         if(canBeTranslatedTo(measurement)){
@@ -26,6 +30,6 @@ public abstract class Measurement {
     public abstract boolean canBeTranslatedTo(Measurement measurement);
 
     Double equivalentCountIn(Measurement measurement) {
-        return count * equivalentIn.get(measurement);
+        return count * equivalentIn.get(measurement.getClass());
     }
 }
