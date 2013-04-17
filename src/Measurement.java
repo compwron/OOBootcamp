@@ -13,4 +13,8 @@ public class Measurement {
     }
 
     HashMap<Object, Double> equivalentIn = new HashMap<Object, Double>();
+
+    public Measurement translateTo(Measurement measurement) {
+        return null;
+    }
 }
