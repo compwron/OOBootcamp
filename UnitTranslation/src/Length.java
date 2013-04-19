@@ -1,5 +1,7 @@
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+@EqualsAndHashCode
 public class Length {
 
     @Getter
@@ -13,7 +15,11 @@ public class Length {
         this.count = count;
     }
 
-    public Length expressedIn(LengthType lengthTypes) {
-        return null;
+    public Length expressedIn(LengthType lengthType) {
+        return new Length(lengthType, translateTo(lengthType, count));
+    }
+
+    private double translateTo(LengthType outType, Double count) {
+        return count * 1/lengthType.toBaseMultiplier() * outType.toBaseMultiplier();
     }
 }

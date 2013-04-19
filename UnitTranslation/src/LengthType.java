@@ -1,4 +1,14 @@
 public enum LengthType {
-//    base unit is inches (until we need to translate to metric units, at least...)
-    Feet, Inches;
+    Feet(){
+        public Double toBaseMultiplier() {
+            return (1.0/12.0);
+        }
+},
+    Inches(){ // is base, for now
+        public Double toBaseMultiplier() {
+            return 1.0;
+        }
+    };
+
+    public abstract Double toBaseMultiplier();
 }

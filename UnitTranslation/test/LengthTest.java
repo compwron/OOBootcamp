@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
@@ -15,6 +16,11 @@ public class LengthTest {
     }
 
     @Test
+    public void lengthsWithSameValuesShouldBeEqual(){
+        assertEquals(new Length(LengthType.Inches, 1), new Length(LengthType.Inches, 1));
+    }
+
+    @Test
     public void lengthShouldHaveTypeAndCount(){
         assertThat(oneFoot.getCount(), is(1.0));
         assertThat(oneFoot.getLengthType(), is(LengthType.Feet));
@@ -22,7 +28,8 @@ public class LengthTest {
 
     @Test
     public void oneFootShouldBeTwelveInches(){
-        assertThat(oneFoot.expressedIn(LengthType.Inches), is(new Length(LengthType.Inches, 12.0)));
+        Length oneFootInInches = oneFoot.expressedIn(LengthType.Inches);
+        assertThat(oneFootInInches.getCount(), is(12.0));
     }
 
 }
