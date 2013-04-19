@@ -3,6 +3,7 @@ import lombok.Getter;
 
 @EqualsAndHashCode
 public class Volume {
+
     @Getter
     private Double count;
 

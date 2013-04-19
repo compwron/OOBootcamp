@@ -16,10 +16,10 @@ public class Length {
     }
 
     public Length expressedIn(LengthType lengthType) {
-        return new Length(lengthType, translateTo(lengthType, count));
+        return new Length(lengthType, translateTo(lengthType));
     }
 
-    private double translateTo(LengthType outType, Double count) {
-        return count * 1 / lengthType.toBaseMultiplier() * outType.toBaseMultiplier();
+    private double translateTo(LengthType outType) {
+        return count / lengthType.toBaseMultiplier() * outType.toBaseMultiplier();
     }
 }
