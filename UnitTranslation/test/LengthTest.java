@@ -55,4 +55,10 @@ public class LengthTest {
         Length oneYard = new Length(LengthType.Feet, 3);
         assertThat(oneYard.expressedIn(LengthType.Yard).getCount(), is(1.0));
     }
+
+    @Test
+    public void oneInchShouldBeOneInch(){
+        Length oneInch = new Length(LengthType.Inches, 1);
+        assertThat(oneInch.expressedIn(LengthType.Inches).getCount(), is(1.0));
+    }
 }
