@@ -1,20 +1,19 @@
+import lombok.Getter;
+
 public class Length {
+
+    @Getter
     private Double count;
 
+    @Getter
+    private LengthType lengthType;
+
     public Length(LengthType lengthType, double count) {
-        //To change body of created methods use File | Settings | File Templates.
+        this.lengthType = lengthType;
+        this.count = count;
     }
 
     public Double expressedIn(LengthType lengthTypes) {
-//        return quantity * lengthTypes.convertionRate;
         return null;
-    }
-
-    public Double getCount() {
-        return count;
-    }
-
-    public LengthType getType() {
-        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }

@@ -8,7 +8,7 @@ public class LengthTest {
     public void lengthShouldHaveTypeAndCount(){
         Length oneFoot = new Length(LengthType.Feet, 1.0);
         assertThat(oneFoot.getCount(), is(1.0));
-        assertThat(oneFoot.getType(), is(LengthType.Feet));
+        assertThat(oneFoot.getLengthType(), is(LengthType.Feet));
     }
 
 }
