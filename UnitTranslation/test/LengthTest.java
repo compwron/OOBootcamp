@@ -32,4 +32,10 @@ public class LengthTest {
         assertThat(oneFootInInches.getCount(), is(12.0));
     }
 
+   @Test
+    public void thirtyInchesShouldBeTwoAndAHalfFeet(){
+        Length twoAndAHalfFeetInInches = new Length(LengthType.Inches, 30);
+       Length expectedTwoAndAHalfFeet = twoAndAHalfFeetInInches.expressedIn(LengthType.Feet);
+       assertThat(expectedTwoAndAHalfFeet.getCount(), is(2.5));
+    }
 }
