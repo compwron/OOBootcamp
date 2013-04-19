@@ -20,6 +20,6 @@ public class Length {
     }
 
     private double translateTo(LengthType outType, Double count) {
-        return count * 1/lengthType.toBaseMultiplier() * outType.toBaseMultiplier();
+        return count * 1 / lengthType.toBaseMultiplier() * outType.toBaseMultiplier();
     }
 }

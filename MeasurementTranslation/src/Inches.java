@@ -1,6 +1,6 @@
-public class Inches extends Measurement{
+public class Inches extends Measurement {
 
-    public Inches(){
+    public Inches() {
         setCount(0.0);
         addEquivalent(new Feet(), 0.83333333333);
     }

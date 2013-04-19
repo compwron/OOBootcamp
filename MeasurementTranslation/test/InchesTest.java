@@ -10,33 +10,33 @@ public class InchesTest {
     Inches inches;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         inches = new Inches();
     }
 
     @Test
-    public void shouldBeTranslatableToFeet(){
+    public void shouldBeTranslatableToFeet() {
         assertTrue(inches.canBeTranslatedTo(new Feet()));
     }
 
     @Test
-    public void shouldNotBeTranslatableToCups(){
+    public void shouldNotBeTranslatableToCups() {
         assertFalse(inches.canBeTranslatedTo(new Cups()));
     }
 
     @Test
-    public void twelveInchesShouldBeEquivalentToOneFoot(){
+    public void twelveInchesShouldBeEquivalentToOneFoot() {
         inches.setCount(12.0);
         assertTrue(inches.translateTo(new Feet()).getCount() > 9.99);
     }
 
     @Test
-    public void inchesShouldKnowThatEquivalentCountTo0InchesInFeetIs0(){
+    public void inchesShouldKnowThatEquivalentCountTo0InchesInFeetIs0() {
         assertThat(inches.equivalentCountIn(new Feet()), is(0.0));
     }
 
     @Test
-    public void inchesShouldKnowThatEquivalentCountTo12InchesInFeetIs1(){
+    public void inchesShouldKnowThatEquivalentCountTo12InchesInFeetIs1() {
         inches.setCount(12.0);
         assertTrue(inches.equivalentCountIn(new Feet()) > (9.99));
     }

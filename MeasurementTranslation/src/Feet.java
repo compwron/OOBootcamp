@@ -1,4 +1,4 @@
-public class Feet extends Measurement{
+public class Feet extends Measurement {
 
     public Feet(Double count) {
         setCount(count);
@@ -6,7 +6,7 @@ public class Feet extends Measurement{
     }
 
     public Feet() {
-       setCount(0.0);
+        setCount(0.0);
     }
 
 

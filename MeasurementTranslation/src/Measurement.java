@@ -14,12 +14,12 @@ public abstract class Measurement {
 
     private HashMap<Class, Double> equivalentIn = new HashMap<Class, Double>();
 
-    public void addEquivalent(Measurement measurement, Double translation){
+    public void addEquivalent(Measurement measurement, Double translation) {
         equivalentIn.put(measurement.getClass(), translation);
     }
 
     public Measurement translateTo(Measurement measurement) {
-        if(canBeTranslatedTo(measurement)){
+        if (canBeTranslatedTo(measurement)) {
             Double equivalentCount = equivalentCountIn(measurement);
             measurement.setCount(equivalentCount);
             return measurement;
