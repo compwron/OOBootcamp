@@ -13,7 +13,7 @@ public class Length {
         this.count = count;
     }
 
-    public Double expressedIn(LengthType lengthTypes) {
+    public Length expressedIn(LengthType lengthTypes) {
         return null;
     }
 }
