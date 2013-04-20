@@ -1,18 +1,18 @@
 public class Main {
     public static void main(String[] args) {
+        printAllLengthConversions();
+        printAllVolumeConversions();
 
         Volume oneTeaspoon = new Volume(MeasurementType.Teaspoons, 1.0);
         Volume oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
         System.out.println("\n1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getVolumeType());
 
         Volume oneCupAndTwoTableSpoons = new Volume(MeasurementType.Cups, 1.0).plus(new Volume(MeasurementType.Tablespoons, 2.0));
-        System.out.println("One cup and two tablespoons is: " + oneCupAndTwoTableSpoons.toString());
+        System.out.println("\nOne cup and two tablespoons is: " + oneCupAndTwoTableSpoons.toString());
 
-        Volume oneInchAndTwoFeet = new Volume(MeasurementType.Inches, 1.0).plus(new Volume(MeasurementType.Feet, 2.0));
-        System.out.print("One inch and two feet is: " + oneInchAndTwoFeet.toString());
+        Length oneInchAndTwoFeet = new Length(MeasurementType.Feet, 2.0).plus(new Length(MeasurementType.Inches, 1.0));
+        System.out.print("\nTwo feet and one inch is: " + oneInchAndTwoFeet.toString());
 
-        printAllLengthConversions();
-        printAllVolumeConversions();
     }
 
 //    rewrite this to only do the Volume ones, since it is not now?

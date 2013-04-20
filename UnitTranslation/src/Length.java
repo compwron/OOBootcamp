@@ -30,4 +30,8 @@ public class Length {
     public String toString(){
         return count + " " + lengthType.name();
     }
+
+    public Length plus(Length length) {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

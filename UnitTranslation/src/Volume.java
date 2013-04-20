@@ -27,7 +27,11 @@ public class Volume {
     }
 
     public Volume plus(Volume volume) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return new Volume(volume.getVolumeType(), combineCounts(volume));
+    }
+
+    private double combineCounts(Volume volume) {
+        return expressedIn(volume.getVolumeType()).getCount() + volume.getCount();
     }
 
     public String toString(){
