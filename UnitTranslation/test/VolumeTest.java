@@ -34,4 +34,9 @@ public class VolumeTest {
         assertThat(oneCup.expressedIn(MeasurementType.Inches), is(new Volume(MeasurementType.InvalidConversion, 0.0)));
     }
 
+    @Test()
+    public void lengthShouldPrintCountAndTypeInToString(){
+        assertThat(new Volume(MeasurementType.Tablespoons, 1.0).toString(), is("1.0 Tablespoons"));
+    }
+
 }

@@ -26,4 +26,8 @@ public class Length {
     private double translateTo(MeasurementType outType) {
         return count * outType.toBaseMultiplier() / lengthType.toBaseMultiplier();
     }
+
+    public String toString(){
+        return count + " " + lengthType.name();
+    }
 }

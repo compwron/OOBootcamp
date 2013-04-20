@@ -67,4 +67,9 @@ public class LengthTest {
         Length oneInch = new Length(MeasurementType.Inches, 1.0);
         assertThat(oneInch.expressedIn(MeasurementType.Teaspoons), is(new Length(MeasurementType.InvalidConversion, 0.0)));
     }
+
+    @Test()
+    public void lengthShouldPrintCountAndTypeInToString(){
+        assertThat(oneFoot.toString(), is("1.0 Feet"));
+    }
 }

@@ -25,4 +25,12 @@ public class Volume {
     private double translateTo(MeasurementType outType, Double count) {
         return count * 1 / volumeType.toBaseMultiplier() * outType.toBaseMultiplier();
     }
+
+    public Volume plus(Volume volume) {
+        return null;  //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public String toString(){
+        return count + " " + volumeType.name();
+    }
 }
