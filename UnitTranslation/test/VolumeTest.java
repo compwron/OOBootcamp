@@ -15,4 +15,17 @@ public class VolumeTest {
         Volume oneTsp = new Volume(VolumeType.Teaspoons, 1.0);
         assertThat(oneTsp.expressedIn(VolumeType.Tablespoons).getCount(), is(0.3333333333333333));
     }
+
+    @Test
+    public void oneCupShouldContain16Tablespoons(){
+        Volume oneCup = new Volume(VolumeType.Cups, 1.0);
+        assertThat(oneCup.expressedIn(VolumeType.Tablespoons).getCount(), is(16.0));
+    }
+
+    @Test
+    public void oneCupShouldContain48Teaspoons(){
+        Volume oneCup = new Volume(VolumeType.Cups, 1.0);
+        assertThat(oneCup.expressedIn(VolumeType.Teaspoons).getCount(), is(48.0));
+    }
+
 }

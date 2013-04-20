@@ -7,6 +7,10 @@ public enum VolumeType {
         public double toBaseMultiplier() {
             return 1;
         }
+    }, Cups {
+        public double toBaseMultiplier() {
+            return 1.0/16.0;
+        }
     };
 
     public abstract double toBaseMultiplier();
