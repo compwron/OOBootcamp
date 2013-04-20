@@ -26,6 +26,10 @@ public enum MeasurementType {
         public Double toBaseMultiplier() {
             return 1.0 / 16.0;
         }
+    }, InvalidConversion(MeasurementClass.Invalid) {
+        public Double toBaseMultiplier() {
+            return 1.0; // return the same as what is passed in
+        }
     };
     MeasurementClass measurementClass;
 

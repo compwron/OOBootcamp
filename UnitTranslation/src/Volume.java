@@ -15,11 +15,11 @@ public class Volume {
         this.count = count;
     }
 
-    public Volume expressedIn(MeasurementType outType) throws InvalidConversionError {
+    public Volume expressedIn(MeasurementType outType) {
         if (outType.measurementClass.equals(MeasurementClass.Volume)) {
             return new Volume(volumeType, translateTo(outType, count));
         }
-        throw new InvalidConversionError();
+        return new Volume(MeasurementType.InvalidConversion, 0.0);
     }
 
     private double translateTo(MeasurementType outType, Double count) {

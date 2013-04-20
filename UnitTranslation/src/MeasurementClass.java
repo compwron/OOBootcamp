@@ -1,3 +1,3 @@
 public enum MeasurementClass {
-    Length, Volume;
+    Length, Volume, Invalid;
 }

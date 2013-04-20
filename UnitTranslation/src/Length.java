@@ -15,11 +15,11 @@ public class Length {
         this.count = count;
     }
 
-    public Length expressedIn(MeasurementType lengthType) throws InvalidConversionError {
+    public Length expressedIn(MeasurementType lengthType) {
         if (lengthType.measurementClass.equals(MeasurementClass.Length)) {
             return new Length(lengthType, translateTo(lengthType));
         }
-        throw new InvalidConversionError();
+        return new Length(MeasurementType.InvalidConversion, 0.0);
 
     }
 

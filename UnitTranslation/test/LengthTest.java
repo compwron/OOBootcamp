@@ -26,45 +26,45 @@ public class LengthTest {
     }
 
     @Test
-    public void oneFootShouldBeTwelveInches() throws InvalidConversionError {
+    public void oneFootShouldBeTwelveInches() {
         Length oneFootInInches = oneFoot.expressedIn(MeasurementType.Inches);
         assertThat(oneFootInInches.getCount(), is(12.0));
     }
 
     @Test
-    public void thirtyInchesShouldBeTwoAndAHalfFeet() throws InvalidConversionError {
+    public void thirtyInchesShouldBeTwoAndAHalfFeet() {
         Length twoAndAHalfFeetInInches = new Length(MeasurementType.Inches, 30);
         Length expectedTwoAndAHalfFeet = twoAndAHalfFeetInInches.expressedIn(MeasurementType.Feet);
         assertThat(expectedTwoAndAHalfFeet.getCount(), is(2.5));
     }
 
     @Test
-    public void thereShouldBe3FeetInAYard() throws InvalidConversionError {
+    public void thereShouldBe3FeetInAYard() {
         Length oneYard = new Length(MeasurementType.Yard, 1);
         assertThat(oneYard.expressedIn(MeasurementType.Feet).getCount(), is(3.0));
     }
 
     @Test
-    public void thereShouldBe36InchesInAYard() throws InvalidConversionError {
+    public void thereShouldBe36InchesInAYard() {
         Length oneYard = new Length(MeasurementType.Yard, 1);
         assertThat(oneYard.expressedIn(MeasurementType.Inches).getCount(), is(36.0));
     }
 
     @Test
-    public void thereShouldBe1YardFor3Feet() throws InvalidConversionError {
+    public void thereShouldBe1YardFor3Feet() {
         Length oneYard = new Length(MeasurementType.Feet, 3);
         assertThat(oneYard.expressedIn(MeasurementType.Yard).getCount(), is(1.0));
     }
 
     @Test
-    public void oneInchShouldBeOneInch() throws InvalidConversionError {
+    public void oneInchShouldBeOneInch() {
         Length oneInch = new Length(MeasurementType.Inches, 1);
         assertThat(oneInch.expressedIn(MeasurementType.Inches).getCount(), is(1.0));
     }
 
-    @Test(expected = InvalidConversionError.class)
-    public void shouldThrowInvalidConversionErrorWhenAttemptingToTranslateALengthToAVolume() throws InvalidConversionError {
+    @Test()
+    public void shouldReturnLengthWithTypeInvalidConversionWithCountOfZeroWhenAttemptingToTranslateALengthToAVolume() {
         Length oneInch = new Length(MeasurementType.Inches, 1.0);
-        oneInch.expressedIn(MeasurementType.Teaspoons);
+        assertThat(oneInch.expressedIn(MeasurementType.Teaspoons), is(new Length(MeasurementType.InvalidConversion, 0.0)));
     }
 }
