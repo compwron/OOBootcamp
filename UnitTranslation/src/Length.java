@@ -18,15 +18,11 @@ public class Length extends Measurement {
     }
 
     @Override
-    public Measurement plus(Measurement measurement) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Length plus(Measurement measurement) {
+        return new Length(measurement.getMeasurementType(), combineCounts(measurement));
     }
 
-    public Length plus(Length length) {
-        return new Length(length.getMeasurementType(), combineCounts(length));
-    }
-
-    private double combineCounts(Length length) {
-        return expressedIn(length.getMeasurementType()).getCount() + length.getCount();
+    private double combineCounts(Measurement measurement) {
+        return expressedIn(measurement.getMeasurementType()).getCount() + measurement.getCount();
     }
 }
