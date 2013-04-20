@@ -8,18 +8,18 @@ public class Length {
     private Double count;
 
     @Getter
-    private LengthType lengthType;
+    private MeasurementType lengthType;
 
-    public Length(LengthType lengthType, double count) {
+    public Length(MeasurementType lengthType, double count) {
         this.lengthType = lengthType;
         this.count = count;
     }
 
-    public Length expressedIn(LengthType lengthType) {
+    public Length expressedIn(MeasurementType lengthType) {
         return new Length(lengthType, translateTo(lengthType));
     }
 
-    private double translateTo(LengthType outType) {
+    private double translateTo(MeasurementType outType) {
         return count * outType.toBaseMultiplier() / lengthType.toBaseMultiplier();
     }
 }

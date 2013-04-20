@@ -11,54 +11,59 @@ public class LengthTest {
 
     @Before
     public void setUp() {
-        oneFoot = new Length(LengthType.Feet, 1.0);
+        oneFoot = new Length(MeasurementType.Feet, 1.0);
     }
 
     @Test
     public void lengthsWithSameValuesShouldBeEqual() {
-        assertEquals(new Length(LengthType.Inches, 1), new Length(LengthType.Inches, 1));
+        assertEquals(new Length(MeasurementType.Inches, 1), new Length(MeasurementType.Inches, 1));
     }
 
     @Test
     public void lengthShouldHaveTypeAndCount() {
         assertThat(oneFoot.getCount(), is(1.0));
-        assertThat(oneFoot.getLengthType(), is(LengthType.Feet));
+        assertThat(oneFoot.getLengthType(), is(MeasurementType.Feet));
     }
 
     @Test
     public void oneFootShouldBeTwelveInches() {
-        Length oneFootInInches = oneFoot.expressedIn(LengthType.Inches);
+        Length oneFootInInches = oneFoot.expressedIn(MeasurementType.Inches);
         assertThat(oneFootInInches.getCount(), is(12.0));
     }
 
     @Test
     public void thirtyInchesShouldBeTwoAndAHalfFeet() {
-        Length twoAndAHalfFeetInInches = new Length(LengthType.Inches, 30);
-        Length expectedTwoAndAHalfFeet = twoAndAHalfFeetInInches.expressedIn(LengthType.Feet);
+        Length twoAndAHalfFeetInInches = new Length(MeasurementType.Inches, 30);
+        Length expectedTwoAndAHalfFeet = twoAndAHalfFeetInInches.expressedIn(MeasurementType.Feet);
         assertThat(expectedTwoAndAHalfFeet.getCount(), is(2.5));
     }
 
     @Test
     public void thereShouldBe3FeetInAYard(){
-        Length oneYard = new Length(LengthType.Yard, 1);
-        assertThat(oneYard.expressedIn(LengthType.Feet).getCount(), is(3.0));
+        Length oneYard = new Length(MeasurementType.Yard, 1);
+        assertThat(oneYard.expressedIn(MeasurementType.Feet).getCount(), is(3.0));
     }
 
     @Test
     public void thereShouldBe36InchesInAYard(){
-        Length oneYard = new Length(LengthType.Yard, 1);
-        assertThat(oneYard.expressedIn(LengthType.Inches).getCount(), is(36.0));
+        Length oneYard = new Length(MeasurementType.Yard, 1);
+        assertThat(oneYard.expressedIn(MeasurementType.Inches).getCount(), is(36.0));
     }
 
     @Test
     public void thereShouldBe1YardFor3Feet(){
-        Length oneYard = new Length(LengthType.Feet, 3);
-        assertThat(oneYard.expressedIn(LengthType.Yard).getCount(), is(1.0));
+        Length oneYard = new Length(MeasurementType.Feet, 3);
+        assertThat(oneYard.expressedIn(MeasurementType.Yard).getCount(), is(1.0));
     }
 
     @Test
     public void oneInchShouldBeOneInch(){
-        Length oneInch = new Length(LengthType.Inches, 1);
-        assertThat(oneInch.expressedIn(LengthType.Inches).getCount(), is(1.0));
+        Length oneInch = new Length(MeasurementType.Inches, 1);
+        assertThat(oneInch.expressedIn(MeasurementType.Inches).getCount(), is(1.0));
+    }
+
+    @Test
+    public void shouldXWhenAttemptingToTranslateALengthToAVolume(){
+
     }
 }
