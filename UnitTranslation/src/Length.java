@@ -1,17 +1,7 @@
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+public class Length extends Measurement {
 
-@EqualsAndHashCode
-public class Length {
-
-    @Getter
-    private Double count;
-
-    @Getter
-    private MeasurementType lengthType;
-
-    public Length(MeasurementType lengthType, double count) {
-        this.lengthType = lengthType;
+    public Length(MeasurementType measurementType, double count) {
+        this.measurementType = measurementType;
         this.count = count;
     }
 
@@ -23,19 +13,20 @@ public class Length {
 
     }
 
-    private double translateTo(MeasurementType outType) {
-        return count * outType.toBaseMultiplier() / lengthType.toBaseMultiplier();
+    public String toString(){
+        return count + " " + measurementType.name();
     }
 
-    public String toString(){
-        return count + " " + lengthType.name();
+    @Override
+    public Measurement plus(Measurement measurement) {
+        return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public Length plus(Length length) {
-        return new Length(length.getLengthType(), combineCounts(length));
+        return new Length(length.getMeasurementType(), combineCounts(length));
     }
 
     private double combineCounts(Length length) {
-        return expressedIn(length.getLengthType()).getCount() + length.getCount();
+        return expressedIn(length.getMeasurementType()).getCount() + length.getCount();
     }
 }

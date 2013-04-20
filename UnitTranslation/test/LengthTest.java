@@ -22,7 +22,7 @@ public class LengthTest {
     @Test
     public void lengthShouldHaveTypeAndCount() {
         assertThat(oneFoot.getCount(), is(1.0));
-        assertThat(oneFoot.getLengthType(), is(MeasurementType.Feet));
+        assertThat(oneFoot.getMeasurementType(), is(MeasurementType.Feet));
     }
 
     @Test

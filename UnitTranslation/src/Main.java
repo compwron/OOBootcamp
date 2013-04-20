@@ -24,7 +24,7 @@ public class Main {
     private static void printInvalidConversion() {
         Volume oneTeaspoon = new Volume(MeasurementType.Teaspoons, 1.0);
         Volume oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
-        System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getVolumeType());
+        System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getMeasurementType());
     }
 
     //    rewrite this to only do the Volume ones, since it is not now?
