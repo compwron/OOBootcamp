@@ -15,7 +15,7 @@ class Rectangle {
         area = distanceBetween(point, point1) * distanceBetween(point1, point2);
     }
 
-    private double distanceBetween(Point point, Point point1){
+    private double distanceBetween(Point point, Point point1) {
         return Math.sqrt(Math.pow((point.getX() - point1.getX()), 2) + Math.pow((point1.getY() - point.getY()), 2));
     }
 

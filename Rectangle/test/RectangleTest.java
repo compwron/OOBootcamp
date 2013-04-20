@@ -44,22 +44,22 @@ public class RectangleTest {
     }
 
     @Test
-    public void rectangleContainsPointInsideOfItself(){
+    public void rectangleContainsPointInsideOfItself() {
         Assert.assertTrue(rectangle.contains(new Point(2, 1)));
     }
 
     @Test
-    public void rectangleDoesNotContainPointOutsideOfItselfOnExtensionOfBorderLine(){
+    public void rectangleDoesNotContainPointOutsideOfItselfOnExtensionOfBorderLine() {
         Assert.assertFalse(rectangle.contains(new Point(4, 0)));
     }
 
     @Test
-    public void pointOnLineBeyondLineEdgeShouldNotBeOnLine(){
-        assertFalse(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0,0), new Point(1,0)), new Point(2,0)));
+    public void pointOnLineBeyondLineEdgeShouldNotBeOnLine() {
+        assertFalse(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0, 0), new Point(1, 0)), new Point(2, 0)));
     }
 
     @Test
-    public void pointOnLineAndNotBeyondLineEdgeShouldBeOnLine(){
-        assertTrue(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0,0), new Point(2,0)), new Point(1,0)));
+    public void pointOnLineAndNotBeyondLineEdgeShouldBeOnLine() {
+        assertTrue(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0, 0), new Point(2, 0)), new Point(1, 0)));
     }
 }
