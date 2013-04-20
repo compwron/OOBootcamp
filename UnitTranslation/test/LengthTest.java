@@ -72,4 +72,10 @@ public class LengthTest {
     public void lengthShouldPrintCountAndTypeInToString(){
         assertThat(oneFoot.toString(), is("1.0 Feet"));
     }
+
+    @Test
+    public void addingOneFootAndOneInchShouldBe13Inches(){
+        Length oneFootAndOneInch = oneFoot.plus(new Length(MeasurementType.Inches, 1.0));
+        assertThat(oneFootAndOneInch, is(new Length(MeasurementType.Inches, 13.0)));
+    }
 }

@@ -32,6 +32,10 @@ public class Length {
     }
 
     public Length plus(Length length) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        return new Length(length.getLengthType(), combineCounts(length));
+    }
+
+    private double combineCounts(Length length) {
+        return expressedIn(length.getLengthType()).getCount() + length.getCount();
     }
 }
