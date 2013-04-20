@@ -5,10 +5,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class VolumeTest {
-    Volume oneCup;
+    private Volume oneCup;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         oneCup = new Volume(MeasurementType.Cups, 1.0);
     }
 
@@ -40,18 +40,18 @@ public class VolumeTest {
     }
 
     @Test
-    public void lengthShouldPrintCountAndTypeInToString(){
+    public void lengthShouldPrintCountAndTypeInToString() {
         assertThat(new Volume(MeasurementType.Tablespoons, 1.0).toString(), is("1.0 Tablespoons"));
     }
 
     @Test
-    public void addingOneCupAndOneTablespoonShouldBe17Tablespoons(){
+    public void addingOneCupAndOneTablespoonShouldBe17Tablespoons() {
         Volume oneCupAndOneTablespoon = oneCup.plus(new Volume(MeasurementType.Tablespoons, 1.0));
         assertThat(oneCupAndOneTablespoon, is(new Volume(MeasurementType.Tablespoons, 17.0)));
     }
 
     @Test
-    public void addingOneTablespoonAndOneTeaspoonShouldBe4Teaspoons(){
+    public void addingOneTablespoonAndOneTeaspoonShouldBe4Teaspoons() {
         Volume oneTablespoonAndOneTeaspoon = new Volume(MeasurementType.Tablespoons, 1.0).plus(new Volume(MeasurementType.Teaspoons, 1.0));
         assertThat(oneTablespoonAndOneTeaspoon, is(new Volume(MeasurementType.Teaspoons, 4.0)));
     }

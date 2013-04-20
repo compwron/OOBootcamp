@@ -6,26 +6,14 @@ public class Volume extends Measurement {
     }
 
     public Volume expressedIn(MeasurementType outType) {
-        if (outType.measurementClass.equals(MeasurementClass.Volume)) {
+        if (outType.measurementClass.equals(MeasurementClassification.Volume)) {
             return new Volume(measurementType, translateTo(outType));
         }
         return new Volume(MeasurementType.InvalidConversion, 0.0);
     }
 
-    public Volume plus(Volume volume) {
-        return new Volume(volume.getMeasurementType(), combineCounts(volume));
-    }
-
-    private double combineCounts(Volume volume) {
-        return expressedIn(volume.getMeasurementType()).getCount() + volume.getCount();
-    }
-
-    public String toString(){
-        return count + " " + measurementType.name();
-    }
-
     @Override
-    public Measurement plus(Measurement measurement) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Volume plus(Measurement volume) {
+        return new Volume(volume.getMeasurementType(), combineCounts(volume));
     }
 }

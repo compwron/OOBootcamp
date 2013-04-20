@@ -8,23 +8,22 @@ public abstract class Measurement {
 
     @Getter
     MeasurementType measurementType;
-    private MeasurementClass measurementClass;
+    private MeasurementClassification measurementClass;
 
 
-    public abstract Measurement expressedIn(MeasurementType measurementType);
+    protected abstract Measurement expressedIn(MeasurementType measurementType);
 
     double translateTo(MeasurementType outType) {
         return count * outType.toBaseMultiplier() / measurementType.toBaseMultiplier();
     }
 
-    public String toString(){
+    public String toString() {
         return count + " " + measurementType.name();
     }
 
     public abstract Measurement plus(Measurement measurement);
 
-
-    private double combineCounts(Measurement measurement) {
+    double combineCounts(Measurement measurement) {
         return expressedIn(measurement.getMeasurementType()).getCount() + measurement.getCount();
     }
 }

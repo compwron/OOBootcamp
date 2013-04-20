@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class RectangleSet {
+class RectangleSet {
     private final ArrayList<Rectangle> rectangles;
 
     public RectangleSet(ArrayList<Rectangle> rectangles) {

@@ -2,8 +2,8 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
-public class Rectangle {
-    private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
+class Rectangle {
+    final private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
     private double area;
 
     public Rectangle(Point point, Point point1, Point point2, Point point3) {
@@ -36,13 +36,10 @@ public class Rectangle {
                 return true;
             }
         }
-        if (pointIsOnSameSideOf(borders.get(0), borders.get(2), point) && pointIsOnSameSideOf(borders.get(1), borders.get(3), point)){
-            return true;
-        }
-        return false;
+        return pointIsOnSameSideOf(borders.get(0), borders.get(2), point) && pointIsOnSameSideOf(borders.get(1), borders.get(3), point);
     }
 
-    protected boolean pointIsWithinEndpointsOf(Line2D line, Point point) {
+    boolean pointIsWithinEndpointsOf(Line2D line, Point point) {
         boolean pointXisWithinLineX = point.getX() >= line.getX1() && point.getX() <= line.getX2();
         boolean pointYIsWithinLineY = point.getY() >= line.getX1() && point.getY() <= line.getY2();
         return line.ptLineDist(point) == 0 && pointXisWithinLineX && pointYIsWithinLineY;

@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 
 public class LengthTest {
-    Length oneFoot;
+    private Length oneFoot;
 
     @Before
     public void setUp() {
@@ -69,12 +69,12 @@ public class LengthTest {
     }
 
     @Test()
-    public void lengthShouldPrintCountAndTypeInToString(){
+    public void lengthShouldPrintCountAndTypeInToString() {
         assertThat(oneFoot.toString(), is("1.0 Feet"));
     }
 
     @Test
-    public void addingOneFootAndOneInchShouldBe13Inches(){
+    public void addingOneFootAndOneInchShouldBe13Inches() {
         Length oneFootAndOneInch = oneFoot.plus(new Length(MeasurementType.Inches, 1.0));
         assertThat(oneFootAndOneInch, is(new Length(MeasurementType.Inches, 13.0)));
     }
