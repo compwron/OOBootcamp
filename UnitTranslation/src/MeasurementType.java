@@ -3,22 +3,20 @@ public enum MeasurementType {
         public Double toBaseMultiplier() {
             return (1.0 / 12.0);
         }
-    },
-    Inches(MeasurementClass.Length) { // is base, for now
-
+    }, Inches(MeasurementClass.Length) { // is base for Length
         public Double toBaseMultiplier() {
             return 1.0;
         }
-    }, Yard(MeasurementClass.Length) {
+    }, Yards(MeasurementClass.Length) {
         public Double toBaseMultiplier() {
             return 1.0 / 36.0;
         }
-    },
-    Teaspoons(MeasurementClass.Volume) {
+    }, Teaspoons(MeasurementClass.Volume) {
         public Double toBaseMultiplier() {
             return 3.0;
         }
-    }, Tablespoons(MeasurementClass.Volume) {
+    }, Tablespoons(MeasurementClass.Volume) { // is base for Volume
+
         public Double toBaseMultiplier() {
             return 1.0;
         }

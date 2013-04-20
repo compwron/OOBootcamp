@@ -40,20 +40,20 @@ public class LengthTest {
 
     @Test
     public void thereShouldBe3FeetInAYard() {
-        Length oneYard = new Length(MeasurementType.Yard, 1);
+        Length oneYard = new Length(MeasurementType.Yards, 1);
         assertThat(oneYard.expressedIn(MeasurementType.Feet).getCount(), is(3.0));
     }
 
     @Test
     public void thereShouldBe36InchesInAYard() {
-        Length oneYard = new Length(MeasurementType.Yard, 1);
+        Length oneYard = new Length(MeasurementType.Yards, 1);
         assertThat(oneYard.expressedIn(MeasurementType.Inches).getCount(), is(36.0));
     }
 
     @Test
     public void thereShouldBe1YardFor3Feet() {
         Length oneYard = new Length(MeasurementType.Feet, 3);
-        assertThat(oneYard.expressedIn(MeasurementType.Yard).getCount(), is(1.0));
+        assertThat(oneYard.expressedIn(MeasurementType.Yards).getCount(), is(1.0));
     }
 
     @Test
