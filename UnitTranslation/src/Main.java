@@ -1,6 +1,8 @@
-public class Main {
-    public static void main(String[] args) {
+import java.util.ArrayList;
 
+public class Main {
+
+    public static void main(String[] args) {
         printAllLengthConversions();
         printAllVolumeConversions();
 
@@ -9,6 +11,42 @@ public class Main {
         printMultiUnitVolumeAddition();
         printMultiUnitLengthAddition();
 
+    }
+
+    private static void printAllVolumeConversions() {
+        ArrayList<MeasurementType> volumeMeasurementTypes = measurementTypesOf(MeasurementClassification.Volume);
+
+        for (MeasurementType startingType : volumeMeasurementTypes) {
+            for (MeasurementType endingType : volumeMeasurementTypes) {
+                Volume oneStartingTypeInEndingType = new Volume(startingType, 1.0).expressedIn(endingType);
+                printTranslation(startingType, endingType, oneStartingTypeInEndingType.toString());
+            }
+        }
+    }
+
+    private static void printTranslation(MeasurementType startingType, MeasurementType endingType, String oneStartingTypeInEndingType) {
+        System.out.println("1 " + startingType.name() + " in " + endingType.name() + " is " + oneStartingTypeInEndingType.toString());
+    }
+
+    private static void printAllLengthConversions() {
+        ArrayList<MeasurementType> lengthMeasurementTypes = measurementTypesOf(MeasurementClassification.Length);
+
+        for (MeasurementType startingType : lengthMeasurementTypes) {
+            for (MeasurementType endingType : lengthMeasurementTypes) {
+                Length oneStartingTypeInEndingType = new Length(startingType, 1.0).expressedIn(endingType);
+                printTranslation(startingType, endingType, oneStartingTypeInEndingType.toString());
+            }
+        }
+    }
+
+    private static ArrayList<MeasurementType> measurementTypesOf(MeasurementClassification measurementClassification) {
+        ArrayList<MeasurementType> lengthMeasurementTypes = new ArrayList<MeasurementType>();
+        for (MeasurementType measurementType : MeasurementType.values()) {
+            if (measurementType.measurementClass.equals(measurementClassification)) {
+                lengthMeasurementTypes.add(measurementType);
+            }
+        }
+        return lengthMeasurementTypes;
     }
 
     private static void printMultiUnitLengthAddition() {
@@ -25,24 +63,5 @@ public class Main {
         Volume oneTeaspoon = new Volume(MeasurementType.Teaspoons, 1.0);
         Volume oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
         System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getMeasurementType());
-    }
-
-    //    rewrite this to only do the Volume ones, since it is not now?
-    private static void printAllVolumeConversions() {
-        for (MeasurementType startingVolumeType : MeasurementType.values()) {
-            for (MeasurementType endingVolumeType : MeasurementType.values()) {
-                Volume resultingVolume = new Volume(startingVolumeType, 1).expressedIn(endingVolumeType);
-                System.out.println("1 " + startingVolumeType.name() + " in " + endingVolumeType.name() + " is " + resultingVolume.toString());
-            }
-        }
-    }
-
-    private static void printAllLengthConversions() {
-        for (MeasurementType startingLengthType : MeasurementType.values()) {
-            for (MeasurementType endingLengthType : MeasurementType.values()) {
-                Length resultingLength = new Length(startingLengthType, 1).expressedIn(endingLengthType);
-                System.out.println("1 " + startingLengthType.name() + " in " + endingLengthType.name() + " is " + resultingLength.toString());
-            }
-        }
     }
 }

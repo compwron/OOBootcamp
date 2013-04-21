@@ -56,4 +56,9 @@ public class VolumeTest {
         assertThat(oneTablespoonAndOneTeaspoon, is(new Volume(MeasurementType.Teaspoons, 4.0)));
     }
 
+    @Test
+    public void unitsOfTranslatedMeasurementAreTheSameAsMeasurementBeingTranslatedTo(){
+        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getMeasurementType(), is(MeasurementType.Teaspoons));
+    }
+
 }
