@@ -19,38 +19,33 @@ public class RectangleTest {
     }
 
     @Test
-    public void rectangleKnowsItsArea() {
+    public void rectangleShouldHaveAreaOf6WhenSidesAre2And3() {
         assertThat(rectangle.getArea(), is(6.0));
     }
 
     @Test
-    public void rectangleDoesNotContainPointOutsideItself() {
+    public void rectangleShouldNotThinkThatItContainsPointOutsideItself() {
         assertFalse(rectangle.contains(new Point(5, 5)));
     }
 
     @Test
-    public void rectangleContainsItsOwnVertex() {
+    public void rectangleShouldContainItsOwnVertex() {
         assertTrue(rectangle.contains(new Point(0, 0)));
     }
 
     @Test
-    public void rectangleContainsPointOnOneOfItsEdges() {
+    public void rectangleShouldContainsPointOnOneOfItsEdges() {
         assertTrue(rectangle.contains(new Point(1, 2)));
     }
 
     @Test
-    public void rectangleDoesNotContainPointOnOneOfTheLinesThatCompriseItsEdgesButNotInRectangle() {
+    public void rectangleShouldNotContainPointOnOneOfTheLinesThatCompriseItsEdgesButNotInRectangle() {
         assertFalse(rectangle.contains(new Point(1, 3)));
     }
 
     @Test
     public void rectangleContainsPointInsideOfItself() {
         Assert.assertTrue(rectangle.contains(new Point(2, 1)));
-    }
-
-    @Test
-    public void rectangleDoesNotContainPointOutsideOfItselfOnExtensionOfBorderLine() {
-        Assert.assertFalse(rectangle.contains(new Point(4, 0)));
     }
 
     @Test
