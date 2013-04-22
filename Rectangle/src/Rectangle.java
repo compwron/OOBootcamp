@@ -5,10 +5,18 @@ import java.util.ArrayList;
 class Rectangle {
     final private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
     private double area;
+    private ArrayList<Point> points = new ArrayList<Point>();
 
     public Rectangle(Point point, Point point1, Point point2, Point point3) {
+        addToPoints(point, point1, point2, point3);
         setBorderLines(point, point1, point2, point3);
         setArea(point, point1, point2);
+    }
+
+    private void addToPoints(Point... points) {
+        for (Point point : points){
+            this.points.add(point);
+        }
     }
 
     private void setArea(Point point, Point point1, Point point2) {
@@ -47,5 +55,13 @@ class Rectangle {
 
     private boolean pointIsOnSameSideOf(Line2D.Float line1, Line2D.Float line2, Point point) {
         return line1.relativeCCW(point) == line2.relativeCCW(point);
+    }
+
+    public String toString(){
+        String pointString = "";
+        for (Point point: points){
+            pointString += point.getX() + "," + point.getY() + "|";
+        }
+        return "Area:" + area + ";Points:" + pointString;
     }
 }

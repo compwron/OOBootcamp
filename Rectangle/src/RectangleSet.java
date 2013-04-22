@@ -14,4 +14,12 @@ class RectangleSet {
         }
         return totalArea;
     }
+
+    public String toString(){
+        String string = "[";
+        for (Rectangle rectangle : rectangles){
+            string += rectangle.toString() + ", ";
+        }
+        return string + "]";
+    }
 }

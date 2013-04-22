@@ -62,4 +62,9 @@ public class RectangleTest {
     public void pointOnLineAndNotBeyondLineEdgeShouldBeOnLine() {
         assertTrue(rectangle.pointIsWithinEndpointsOf(new Line2D.Float(new Point(0, 0), new Point(2, 0)), new Point(1, 0)));
     }
+
+    @Test
+    public void rectangleToStringShouldContainPointsAndArea(){
+        assertThat(rectangle.toString(), is("Area:6.0;Points:0.0,0.0|0.0,2.0|3.0,2.0|3.0,0.0|"));
+    }
 }
