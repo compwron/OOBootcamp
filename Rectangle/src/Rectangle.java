@@ -48,6 +48,7 @@ class Rectangle {
     }
 
     boolean pointIsWithinEndpointsOf(Line2D line, Point point) {
+//make rectangleLine to hide this logic
         boolean pointXisWithinLineX = point.getX() >= line.getX1() && point.getX() <= line.getX2();
         boolean pointYIsWithinLineY = point.getY() >= line.getX1() && point.getY() <= line.getY2();
         return line.ptLineDist(point) == 0 && pointXisWithinLineX && pointYIsWithinLineY;

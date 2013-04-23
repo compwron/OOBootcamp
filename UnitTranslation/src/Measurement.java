@@ -2,16 +2,30 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @EqualsAndHashCode
-public abstract class Measurement {
+public class Measurement {
     @Getter
     protected Double count;
 
     @Getter
     MeasurementType measurementType;
-    private MeasurementClassification measurementClass;
 
+    public Measurement(MeasurementType measurementType, double count) {
+        this.measurementType = measurementType;
+        this.count = count;
+    }
 
-    protected abstract Measurement expressedIn(MeasurementType measurementType);
+    public Measurement expressedIn(MeasurementType measurementType) {
+        if (measurementType.measurementClass.equals(MeasurementClassification.Length)) {
+            return new Measurement(measurementType, translateTo(measurementType));
+        }
+        return new Measurement(MeasurementType.InvalidConversion, 0.0);
+
+    }
+
+    public Measurement plus(Measurement measurement) {
+        return new Measurement(measurement.getMeasurementType(), combineCounts(measurement));
+    }
+
 
     double translateTo(MeasurementType outType) {
         return count * outType.toBaseMultiplier() / measurementType.toBaseMultiplier();
@@ -21,9 +35,7 @@ public abstract class Measurement {
         return count + " " + measurementType.name();
     }
 
-    public abstract Measurement plus(Measurement measurement);
-
     double combineCounts(Measurement measurement) {
-        return expressedIn(measurement.getMeasurementType()).getCount() + measurement.getCount();
+        return expressedIn(measurement.getMeasurementType()).getCount() + count;
     }
 }

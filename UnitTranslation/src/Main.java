@@ -18,7 +18,7 @@ public class Main {
 
         for (MeasurementType startingType : volumeMeasurementTypes) {
             for (MeasurementType endingType : volumeMeasurementTypes) {
-                Volume oneStartingTypeInEndingType = new Volume(startingType, 1.0).expressedIn(endingType);
+                Measurement oneStartingTypeInEndingType = new Measurement(startingType, 1.0).expressedIn(endingType);
                 printTranslation(startingType, endingType, oneStartingTypeInEndingType.toString());
             }
         }
@@ -33,7 +33,7 @@ public class Main {
 
         for (MeasurementType startingType : lengthMeasurementTypes) {
             for (MeasurementType endingType : lengthMeasurementTypes) {
-                Length oneStartingTypeInEndingType = new Length(startingType, 1.0).expressedIn(endingType);
+                Measurement oneStartingTypeInEndingType = new Measurement(startingType, 1.0).expressedIn(endingType);
                 printTranslation(startingType, endingType, oneStartingTypeInEndingType.toString());
             }
         }
@@ -50,18 +50,18 @@ public class Main {
     }
 
     private static void printMultiUnitLengthAddition() {
-        Length oneInchAndTwoFeet = new Length(MeasurementType.Feet, 2.0).plus(new Length(MeasurementType.Inches, 1.0));
+        Measurement oneInchAndTwoFeet = new Measurement(MeasurementType.Feet, 2.0).plus(new Measurement(MeasurementType.Inches, 1.0));
         System.out.print("\nTwo feet and one inch is: " + oneInchAndTwoFeet.toString());
     }
 
     private static void printMultiUnitVolumeAddition() {
-        Volume oneCupAndTwoTableSpoons = new Volume(MeasurementType.Cups, 1.0).plus(new Volume(MeasurementType.Tablespoons, 2.0));
+        Measurement oneCupAndTwoTableSpoons = new Measurement(MeasurementType.Cups, 1.0).plus(new Measurement(MeasurementType.Tablespoons, 2.0));
         System.out.println("\nOne cup and two tablespoons is: " + oneCupAndTwoTableSpoons.toString());
     }
 
     private static void printInvalidConversion() {
-        Volume oneTeaspoon = new Volume(MeasurementType.Teaspoons, 1.0);
-        Volume oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
+        Measurement oneTeaspoon = new Measurement(MeasurementType.Teaspoons, 1.0);
+        Measurement oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
         System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getMeasurementType());
     }
 }
