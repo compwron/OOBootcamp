@@ -14,9 +14,9 @@ public class Measurement {
         this.count = count;
     }
 
-    public Measurement expressedIn(MeasurementType measurementType) {
-        if (measurementType.measurementClass.equals(measurementType.measurementClass)) {
-            return new Measurement(measurementType, translateTo(measurementType));
+    public Measurement expressedIn(MeasurementType type) {
+        if (measurementType.measurementClass.equals(type.measurementClass)) {
+            return new Measurement(type, translateTo(type));
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
 
