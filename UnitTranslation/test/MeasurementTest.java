@@ -40,11 +40,6 @@ public class MeasurementTest {
     }
 
     @Test
-    public void shouldThrowInvalidConversionErrorWhenAttemptingToTranslateAMeasurementToALength() {
-        assertThat(oneCup.expressedIn(MeasurementType.Inches), is(new Measurement(MeasurementType.InvalidConversion, 0.0)));
-    }
-
-    @Test
     public void lengthShouldPrintCountAndTypeInToString() {
         assertThat(new Measurement(MeasurementType.Tablespoons, 1.0).toString(), CoreMatchers.is("1.0 Tablespoons"));
     }
