@@ -15,7 +15,7 @@ public class Measurement {
     }
 
     public Measurement expressedIn(MeasurementType measurementType) {
-        if (measurementType.measurementClass.equals(MeasurementClassification.Length)) {
+        if (measurementType.measurementClass.equals(measurementType.measurementClass)) {
             return new Measurement(measurementType, translateTo(measurementType));
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
