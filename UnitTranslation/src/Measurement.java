@@ -26,7 +26,6 @@ public class Measurement {
         return new Measurement(measurement.getMeasurementType(), combineCounts(measurement));
     }
 
-
     double translateTo(MeasurementType outType) {
         double inBaseUnits = getBaseCount();
         return (inBaseUnits - outType.additive) * outType.toBaseMultiplier();
