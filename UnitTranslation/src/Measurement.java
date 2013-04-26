@@ -28,7 +28,12 @@ public class Measurement {
 
 
     double translateTo(MeasurementType outType) {
-        return count * outType.toBaseMultiplier() / measurementType.toBaseMultiplier();
+        double inBaseUnits = getBaseCount();
+        return (inBaseUnits - outType.additive) * outType.toBaseMultiplier();
+    }
+
+    protected double getBaseCount() {
+        return (count / measurementType.toBaseMultiplier()) + measurementType.additive;
     }
 
     public String toString() {

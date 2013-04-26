@@ -30,21 +30,27 @@ public enum MeasurementType {
         public Double toBaseMultiplier() {
             return 1.0; // return the same as what is passed in
         }
-    }, Fahrenheit(MeasurementClassification.Temperature){
-        @Override
+    }, Fahrenheit(MeasurementClassification.Temperature) { // base
+
         public Double toBaseMultiplier() {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            return 1.0;
         }
-    }, Celsius(MeasurementClassification.Temperature){
-        @Override
+    }, Celsius(MeasurementClassification.Temperature, 32) {
         public Double toBaseMultiplier() {
-            return null;  //To change body of implemented methods use File | Settings | File Templates.
+            return 5.0 / 9.0;
         }
     };
     final MeasurementClassification measurementClass;
+    public final int additive;
+
+    MeasurementType(MeasurementClassification measurementClass, int additive) {
+        this.measurementClass = measurementClass;
+        this.additive = additive;
+    }
 
     MeasurementType(MeasurementClassification measurementClass) {
         this.measurementClass = measurementClass;
+        this.additive = 0;
     }
 
     public abstract Double toBaseMultiplier();

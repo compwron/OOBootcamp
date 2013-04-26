@@ -13,3 +13,6 @@ Might want to have a Main that prints all conversions
 4.  Bonus: be able to do "1 cup and 4tbsp is X tbsp" (Assumption: always return result in last unit given)
 5.  Bonus if you're done with the above: Fahrenheit -> Celsius and backwards
 6.  (me) Add a list of different values
+
+TODO:
+store in base units
