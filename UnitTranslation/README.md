@@ -11,3 +11,5 @@ Might want to have a Main that prints all conversions
 2.  inches -> feet, feet -> yards, inches -> yards (ditto bonus)
 3.  Have something intelligent happen when you try to translate tsp to inches, etc. (throw named exception or print error message or something)
 4.  Bonus: be able to do "1 cup and 4tbsp is X tbsp" (Assumption: always return result in last unit given)
+5.  Bonus if you're done with the above: Fahrenheit -> Celsius and backwards
+6.  (me) Add a list of different values

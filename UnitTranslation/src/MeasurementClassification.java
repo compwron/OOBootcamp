@@ -1,3 +1,3 @@
 public enum MeasurementClassification {
-    Length, Volume, Invalid
+    Length, Volume, Temperature, Invalid
 }

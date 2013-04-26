@@ -18,6 +18,17 @@ public class MeasurementTest {
     }
 
     @Test
+    public void thirtyTwoDegreesFahrenheitIs0DegreesCelsius(){
+        Measurement freezingFahrenheit = new Measurement(MeasurementType.Fahrenheit, 32.0);
+        assertThat(freezingFahrenheit.expressedIn(MeasurementType.Celsius).count, is(0.0));
+    }
+
+    @Test
+    public void celsiusIsATemperature(){
+        assertThat(MeasurementType.Celsius.measurementClass, is(MeasurementClassification.Temperature));
+    }
+
+    @Test
     public void oneTbspIsThreeTsp() {
         Measurement oneTbsp = new Measurement(MeasurementType.Tablespoons, 1.0);
         assertThat(oneTbsp.expressedIn(MeasurementType.Teaspoons).getCount(), CoreMatchers.is(3.0));
