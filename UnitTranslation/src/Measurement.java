@@ -4,42 +4,46 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Measurement {
     @Getter
-    protected Double count;
+    protected Double baseCount;
 
     @Getter
-    MeasurementType measurementType;
+    MeasurementType defaultMeasurementType;
 
     public Measurement(MeasurementType measurementType, double count) {
-        this.measurementType = measurementType;
-        this.count = count;
+        this.defaultMeasurementType = measurementType;
+        this.baseCount = getBaseCount(count);
     }
 
-    public Measurement expressedIn(MeasurementType type) {
-        if (measurementType.measurementClass.equals(type.measurementClass)) {
-            return new Measurement(type, translateTo(type));
+    public Measurement expressedIn(MeasurementType newType) {
+        if (defaultMeasurementType.measurementClass.equals(newType.measurementClass)) {
+            return new Measurement(newType, translateTo(newType));
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
 
     }
 
     public Measurement plus(Measurement measurement) {
-        return new Measurement(measurement.getMeasurementType(), combineCounts(measurement));
+        double sum = measurement.getCount() + this.translateTo(measurement.getDefaultMeasurementType());
+        return new Measurement(measurement.getDefaultMeasurementType(), sum);
     }
 
     double translateTo(MeasurementType outType) {
-        double inBaseUnits = getBaseCount();
-        return (inBaseUnits - outType.additive) * outType.toBaseMultiplier();
+        return (baseCount - outType.additive) * outType.toBaseMultiplier();
     }
 
-    protected double getBaseCount() {
-        return (count / measurementType.toBaseMultiplier()) + measurementType.additive;
+    protected double getBaseCount(double count) {
+        return (count / defaultMeasurementType.toBaseMultiplier()) + defaultMeasurementType.additive;
     }
 
     public String toString() {
-        return count + " " + measurementType.name();
+        return baseCount + " " + defaultMeasurementType.name();
     }
 
-    double combineCounts(Measurement measurement) {
-        return expressedIn(measurement.getMeasurementType()).getCount() + count;
+//    double combineCounts(Measurement measurement) {
+//        return (measurement.getBaseCount() + baseCount) * measurement.;
+//    }
+
+    public Double getCount() {
+        return translateTo(defaultMeasurementType);
     }
 }

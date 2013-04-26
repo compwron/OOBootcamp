@@ -62,6 +62,6 @@ public class Main {
     private static void printInvalidConversion() {
         Measurement oneTeaspoon = new Measurement(MeasurementType.Teaspoons, 1.0);
         Measurement oneTeaspoonInInches = oneTeaspoon.expressedIn(MeasurementType.Inches);
-        System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getCount() + " " + oneTeaspoonInInches.getMeasurementType());
+        System.out.println("\nTesting invalid conversion: 1 Teaspoon in inches is: " + oneTeaspoonInInches.getBaseCount() + " " + oneTeaspoonInInches.getDefaultMeasurementType());
     }
 }

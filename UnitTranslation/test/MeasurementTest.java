@@ -20,7 +20,7 @@ public class MeasurementTest {
     @Test
     public void shouldTranslateFarenheitToBaseUnitsWithoutChangingCOunt() {
         Measurement zeroDegreesFarenheit = new Measurement(MeasurementType.Fahrenheit, 1.0);
-        assertThat(zeroDegreesFarenheit.getBaseCount(), is(1.0));
+        assertThat(zeroDegreesFarenheit.getCount(), is(1.0));
     }
 
     @Test
@@ -32,13 +32,13 @@ public class MeasurementTest {
     @Test
     public void thirtyTwoDegreesFahrenheitIs0DegreesCelsius() {
         Measurement freezingFahrenheit = new Measurement(MeasurementType.Fahrenheit, 32.0);
-        assertThat(freezingFahrenheit.expressedIn(MeasurementType.Celsius).count, is(0.0));
+        assertThat(freezingFahrenheit.expressedIn(MeasurementType.Celsius).baseCount, is(0.0));
     }
 
     @Test
     public void zeroDegreesCelsiusIs32DegreesFahrenheit() {
         Measurement freezingCelsius = new Measurement(MeasurementType.Celsius, 0.0);
-        assertThat(freezingCelsius.expressedIn(MeasurementType.Fahrenheit).count, is(32.0));
+        assertThat(freezingCelsius.expressedIn(MeasurementType.Fahrenheit).baseCount, is(32.0));
     }
 
     @Test
@@ -87,7 +87,7 @@ public class MeasurementTest {
 
     @Test
     public void unitsOfTranslatedMeasurementAreTheSameAsMeasurementBeingTranslatedTo() {
-        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getMeasurementType(), CoreMatchers.is(MeasurementType.Teaspoons));
+        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getDefaultMeasurementType(), CoreMatchers.is(MeasurementType.Teaspoons));
     }
 
 
@@ -99,7 +99,7 @@ public class MeasurementTest {
     @Test
     public void MeasurementShouldHaveTypeAndCount() {
         assertThat(oneFoot.getCount(), is(1.0));
-        assertThat(oneFoot.getMeasurementType(), is(MeasurementType.Feet));
+        assertThat(oneFoot.getDefaultMeasurementType(), is(MeasurementType.Feet));
     }
 
     @Test
