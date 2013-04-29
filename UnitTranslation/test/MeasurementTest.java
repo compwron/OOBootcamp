@@ -22,6 +22,7 @@ public class MeasurementTest {
         Measurement celsiusFreezing = new Measurement(MeasurementType.Celsius, 0.0);
         Measurement fahrenheitZero = new Measurement(MeasurementType.Fahrenheit, 0.0);
         assertThat(celsiusFreezing.plus(fahrenheitZero), is(new Measurement(MeasurementType.Fahrenheit, 32.0)));
+        assertThat(fahrenheitZero.plus(celsiusFreezing), is(new Measurement(MeasurementType.Celsius, 0.0)));
     }
 
     @Test
