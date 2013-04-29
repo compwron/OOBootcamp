@@ -31,7 +31,8 @@ public class Measurement {
 
     public Measurement plus(Measurement measurement) {
         Double totalBaseUnitCount = baseUnitCount + measurement.getBaseUnitCount();
-        return new Measurement(measurement.measurementType, (totalBaseUnitCount - measurement.measurementType.additive) * measurement.measurementType.toBaseMultiplier());
+        Double newMeasurementCount = (totalBaseUnitCount - measurement.measurementType.additive) * measurement.measurementType.toBaseMultiplier();
+        return new Measurement(measurement.measurementType, newMeasurementCount);
     }
 
     public String toString() {
