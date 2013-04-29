@@ -11,19 +11,22 @@ public class Measurement {
 
     public Measurement(MeasurementType measurementType, double count){
         this.measurementType = measurementType;
-        this.baseUnitCount = getBaseCount(count);
+        this.baseUnitCount = translateToBaseCount(count);
     }
 
-    private double getBaseCount(double count) {
-        return count / measurementType.toBaseMultiplier();
+    private double translateToBaseCount(double count) {
+        return count / measurementType.toBaseMultiplier() + measurementType.additive;
     }
 
     public double getCountInMeasurement(){
-        return baseUnitCount * measurementType.toBaseMultiplier();
+        return (baseUnitCount - measurementType.additive) * measurementType.toBaseMultiplier();
     }
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
-        return new Measurement(newMeasurementType, baseUnitCount * newMeasurementType.toBaseMultiplier());
+        if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)){
+            return new Measurement(newMeasurementType, baseUnitCount * newMeasurementType.toBaseMultiplier());
+        }
+        return new Measurement(MeasurementType.InvalidConversion, 0.0);
     }
 
     public Measurement plus(Measurement measurement) {
