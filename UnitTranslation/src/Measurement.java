@@ -9,7 +9,7 @@ public class Measurement {
     @Getter
     private final MeasurementType measurementType;
 
-    public Measurement(MeasurementType measurementType, double count){
+    public Measurement(MeasurementType measurementType, double count) {
         this.measurementType = measurementType;
         this.baseUnitCount = translateToBaseCount(count);
     }
@@ -18,12 +18,12 @@ public class Measurement {
         return count / measurementType.toBaseMultiplier() + measurementType.additive;
     }
 
-    public double getCountInMeasurement(){
+    public double getCountInMeasurement() {
         return (baseUnitCount - measurementType.additive) * measurementType.toBaseMultiplier();
     }
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
-        if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)){
+        if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)) {
             return new Measurement(newMeasurementType, (baseUnitCount - newMeasurementType.additive) * newMeasurementType.toBaseMultiplier());
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
@@ -34,7 +34,7 @@ public class Measurement {
         return new Measurement(measurement.measurementType, totalBaseUnitCount * measurement.measurementType.toBaseMultiplier());
     }
 
-    public String toString(){
+    public String toString() {
         return getCountInMeasurement() + " " + measurementType;
     }
 }

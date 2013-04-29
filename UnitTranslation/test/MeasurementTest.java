@@ -18,17 +18,17 @@ public class MeasurementTest {
     }
 
     @Test
-    public void constructorShouldStoreBaseUnitsForFootInInches(){
+    public void constructorShouldStoreBaseUnitsForFootInInches() {
         assertThat(oneCup.getBaseUnitCount(), is(16.0));
     }
 
     @Test
-    public void constructorShouldStoreBaseUnitCountForInchesInInches(){
+    public void constructorShouldStoreBaseUnitCountForInchesInInches() {
         assertThat(new Measurement(MeasurementType.Inches, 2).getBaseUnitCount(), is(2.0));
     }
 
     @Test
-    public void measurementKnowsCountOfOriginalUnits(){
+    public void measurementKnowsCountOfOriginalUnits() {
         assertThat(oneFoot.getCountInMeasurement(), is(1.0));
     }
 
