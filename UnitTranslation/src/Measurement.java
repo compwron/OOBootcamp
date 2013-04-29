@@ -19,7 +19,7 @@ public class Measurement {
     }
 
     public double measurementUnitCount() {
-        return (baseUnitCount - measurementType.additive) * measurementType.toBaseMultiplier();
+        return (baseUnitCount - measurementType.additive) * measurementType.toBaseMultiplier(); //duplication
     }
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
@@ -31,7 +31,7 @@ public class Measurement {
 
     public Measurement plus(Measurement measurement) {
         Double totalBaseUnitCount = baseUnitCount + measurement.getBaseUnitCount();
-        Double newMeasurementCount = (totalBaseUnitCount - measurement.measurementType.additive) * measurement.measurementType.toBaseMultiplier();
+        Double newMeasurementCount = (totalBaseUnitCount - measurement.measurementType.additive) * measurement.measurementType.toBaseMultiplier(); // duplication
         return new Measurement(measurement.measurementType, newMeasurementCount);
     }
 
