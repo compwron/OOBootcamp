@@ -18,27 +18,42 @@ public class MeasurementTest {
     }
 
     @Test
-    public void shouldTranslateFarenheitToBaseUnitsWithoutChangingCOunt() {
+    public void constructorShouldStoreBaseUnitsForFootInInches(){
+        assertThat(oneCup.getBaseUnitCount(), is(16.0));
+    }
+
+    @Test
+    public void constructorShouldStoreBaseUnitCountForInchesInInches(){
+        assertThat(new Measurement(MeasurementType.Inches, 2).getBaseUnitCount(), is(2.0));
+    }
+
+    @Test
+    public void measurementKnowsCountOfOriginalUnits(){
+        assertThat(oneFoot.getCountInMeasurement(), is(1.0));
+    }
+
+    @Test
+    public void shouldTranslateFarenheitToBaseUnitsWithoutChangingCount() {
         Measurement zeroDegreesFarenheit = new Measurement(MeasurementType.Fahrenheit, 1.0);
-        assertThat(zeroDegreesFarenheit.getCount(), is(1.0));
+        assertThat(zeroDegreesFarenheit.getCountInMeasurement(), is(1.0));
     }
 
     @Test
     public void shouldTranslateCelsiusToBaseUnitsAndChangeCount() {
         Measurement zeroDegreesCelsius = new Measurement(MeasurementType.Celsius, 0.0);
-        assertThat(zeroDegreesCelsius.getBaseCount(), is(32.0));
+        assertThat(zeroDegreesCelsius.getBaseUnitCount(), is(32.0));
     }
 
     @Test
     public void thirtyTwoDegreesFahrenheitIs0DegreesCelsius() {
         Measurement freezingFahrenheit = new Measurement(MeasurementType.Fahrenheit, 32.0);
-        assertThat(freezingFahrenheit.expressedIn(MeasurementType.Celsius).baseCount, is(0.0));
+        assertThat(freezingFahrenheit.expressedIn(MeasurementType.Celsius).getCountInMeasurement(), is(0.0));
     }
 
     @Test
     public void zeroDegreesCelsiusIs32DegreesFahrenheit() {
         Measurement freezingCelsius = new Measurement(MeasurementType.Celsius, 0.0);
-        assertThat(freezingCelsius.expressedIn(MeasurementType.Fahrenheit).baseCount, is(32.0));
+        assertThat(freezingCelsius.expressedIn(MeasurementType.Fahrenheit).getCountInMeasurement(), is(32.0));
     }
 
     @Test
@@ -49,23 +64,23 @@ public class MeasurementTest {
     @Test
     public void oneTbspIsThreeTsp() {
         Measurement oneTbsp = new Measurement(MeasurementType.Tablespoons, 1.0);
-        assertThat(oneTbsp.expressedIn(MeasurementType.Teaspoons).getCount(), CoreMatchers.is(3.0));
+        assertThat(oneTbsp.expressedIn(MeasurementType.Teaspoons).getCountInMeasurement(), CoreMatchers.is(3.0));
     }
 
     @Test
     public void oneTspIsHalfOfATbsp() {
         Measurement oneTsp = new Measurement(MeasurementType.Teaspoons, 1.0);
-        assertThat(oneTsp.expressedIn(MeasurementType.Tablespoons).getCount(), CoreMatchers.is(0.3333333333333333));
+        assertThat(oneTsp.expressedIn(MeasurementType.Tablespoons).getCountInMeasurement(), CoreMatchers.is(0.3333333333333333));
     }
 
     @Test
     public void oneCupShouldContain16Tablespoons() {
-        assertThat(oneCup.expressedIn(MeasurementType.Tablespoons).getCount(), CoreMatchers.is(16.0));
+        assertThat(oneCup.expressedIn(MeasurementType.Tablespoons).getCountInMeasurement(), CoreMatchers.is(16.0));
     }
 
     @Test
     public void oneCupShouldContain48Teaspoons() {
-        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getCount(), CoreMatchers.is(48.0));
+        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getCountInMeasurement(), CoreMatchers.is(48.0));
     }
 
     @Test
@@ -87,7 +102,7 @@ public class MeasurementTest {
 
     @Test
     public void unitsOfTranslatedMeasurementAreTheSameAsMeasurementBeingTranslatedTo() {
-        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getDefaultMeasurementType(), CoreMatchers.is(MeasurementType.Teaspoons));
+        assertThat(oneCup.expressedIn(MeasurementType.Teaspoons).getMeasurementType(), CoreMatchers.is(MeasurementType.Teaspoons));
     }
 
 
@@ -98,45 +113,45 @@ public class MeasurementTest {
 
     @Test
     public void MeasurementShouldHaveTypeAndCount() {
-        assertThat(oneFoot.getCount(), is(1.0));
-        assertThat(oneFoot.getDefaultMeasurementType(), is(MeasurementType.Feet));
+        assertThat(oneFoot.getCountInMeasurement(), is(1.0));
+        assertThat(oneFoot.getMeasurementType(), is(MeasurementType.Feet));
     }
 
     @Test
     public void oneFootShouldBeTwelveInches() {
         Measurement oneFootInInches = oneFoot.expressedIn(MeasurementType.Inches);
-        assertThat(oneFootInInches.getCount(), is(12.0));
+        assertThat(oneFootInInches.getCountInMeasurement(), is(12.0));
     }
 
     @Test
     public void thirtyInchesShouldBeTwoAndAHalfFeet() {
         Measurement twoAndAHalfFeetInInches = new Measurement(MeasurementType.Inches, 30);
         Measurement expectedTwoAndAHalfFeet = twoAndAHalfFeetInInches.expressedIn(MeasurementType.Feet);
-        assertThat(expectedTwoAndAHalfFeet.getCount(), is(2.5));
+        assertThat(expectedTwoAndAHalfFeet.getCountInMeasurement(), is(2.5));
     }
 
     @Test
     public void thereShouldBe3FeetInAYard() {
         Measurement oneYard = new Measurement(MeasurementType.Yards, 1);
-        assertThat(oneYard.expressedIn(MeasurementType.Feet).getCount(), is(3.0));
+        assertThat(oneYard.expressedIn(MeasurementType.Feet).getCountInMeasurement(), is(3.0));
     }
 
     @Test
     public void thereShouldBe36InchesInAYard() {
         Measurement oneYard = new Measurement(MeasurementType.Yards, 1);
-        assertThat(oneYard.expressedIn(MeasurementType.Inches).getCount(), is(36.0));
+        assertThat(oneYard.expressedIn(MeasurementType.Inches).getCountInMeasurement(), is(36.0));
     }
 
     @Test
     public void thereShouldBe1YardFor3Feet() {
         Measurement oneYard = new Measurement(MeasurementType.Feet, 3);
-        assertThat(oneYard.expressedIn(MeasurementType.Yards).getCount(), is(1.0));
+        assertThat(oneYard.expressedIn(MeasurementType.Yards).getCountInMeasurement(), is(1.0));
     }
 
     @Test
     public void oneInchShouldBeOneInch() {
         Measurement oneInch = new Measurement(MeasurementType.Inches, 1);
-        assertThat(oneInch.expressedIn(MeasurementType.Inches).getCount(), is(1.0));
+        assertThat(oneInch.expressedIn(MeasurementType.Inches).getCountInMeasurement(), is(1.0));
     }
 
     @Test()
