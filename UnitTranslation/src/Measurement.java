@@ -15,16 +15,16 @@ public class Measurement {
     }
 
     private double translateToBaseCount(double count) {
-        return count / measurementType.toBaseMultiplier() + measurementType.additive;
+        return measurementType.additive + count / measurementType.toBaseMultiplier();
     }
 
-    public double getCountInMeasurement() {
+    public double measurementUnitCount() {
         return (baseUnitCount - measurementType.additive) * measurementType.toBaseMultiplier();
     }
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
         if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)) {
-            return new Measurement(newMeasurementType, (baseUnitCount - newMeasurementType.additive) * newMeasurementType.toBaseMultiplier());
+            return new Measurement(newMeasurementType, (baseUnitCount -  newMeasurementType.additive) * newMeasurementType.toBaseMultiplier());
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
     }
@@ -35,6 +35,6 @@ public class Measurement {
     }
 
     public String toString() {
-        return getCountInMeasurement() + " " + measurementType;
+        return measurementUnitCount() + " " + measurementType;
     }
 }
