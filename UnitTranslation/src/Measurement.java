@@ -24,7 +24,7 @@ public class Measurement {
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
         if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)){
-            return new Measurement(newMeasurementType, baseUnitCount * newMeasurementType.toBaseMultiplier());
+            return new Measurement(newMeasurementType, (baseUnitCount - newMeasurementType.additive) * newMeasurementType.toBaseMultiplier());
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
     }
