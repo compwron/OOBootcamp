@@ -18,7 +18,7 @@ public class Measurement {
         return measurementType.additive + count / measurementType.toBaseMultiplier();
     }
 
-    private double translate(double baseUnitCount, int additive, Double multiplier) {
+    private double translateToMeasurementCount(double baseUnitCount, int additive, Double multiplier) {
         return (baseUnitCount - additive) * multiplier;
     }
 
@@ -31,12 +31,12 @@ public class Measurement {
 
     public Measurement plus(Measurement measurement) {
         Double totalBaseUnitCount = baseUnitCount + measurement.getBaseUnitCount();
-        Double newMeasurementCount = translate(totalBaseUnitCount, measurement.measurementType.additive, measurement.measurementType.toBaseMultiplier());
+        Double newMeasurementCount = translateToMeasurementCount(totalBaseUnitCount, measurement.measurementType.additive, measurement.measurementType.toBaseMultiplier());
         return new Measurement(measurement.measurementType, newMeasurementCount);
     }
 
     public double measurementUnitCount() {
-        return translate(baseUnitCount, measurementType.additive, measurementType.toBaseMultiplier());
+        return translateToMeasurementCount(baseUnitCount, measurementType.additive, measurementType.toBaseMultiplier());
     }
 
     public String toString() {
