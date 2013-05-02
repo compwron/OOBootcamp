@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Main {
+public class RectangleMain {
     public static void main(String[] args){
         ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
         rectangles.add(rectangle());

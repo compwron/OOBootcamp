@@ -10,7 +10,21 @@ configurations {
 }
 
 sourceSets {
-    main { compileClasspath += configurations.provided }
+    def projects = ['Rectangle', 'UnitTranslation']
+
+    main {
+        compileClasspath += configurations.provided
+
+        java {
+            srcDirs = projects.collect { project -> project + '/src' }
+        }
+    }
+
+    test {
+        java {
+            srcDirs = projects.collect { project -> project + '/test' }
+        }
+    }
 }
 
 idea {

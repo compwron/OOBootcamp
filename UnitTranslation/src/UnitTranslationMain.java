@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Main {
+public class UnitTranslationMain {
 
     public static void main(String[] args) {
         printAllLengthConversions();
