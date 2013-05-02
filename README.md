@@ -27,7 +27,7 @@ Flexible code is better than performant code because flexible code can be unders
 Adam's code is cool, it uses Java 8.1 lambdas
 
 New assignment: (simple version of upcoming collections assignment)
-* Given a collection of integers,
+* Given a collection of integers (you can use ArrayList or [] or anything),
 ** find the largest value
 ** find the smallest value
 ** don't use any libraries

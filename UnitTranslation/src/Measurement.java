@@ -15,7 +15,7 @@ public class Measurement {
     }
 
     private double translateToBaseCount(double count) {
-        return measurementType.additive + count / measurementType.toBaseMultiplier();
+        return measurementType.additive + count / measurementType.toBaseMultiplier;
     }
 
     private double translateToMeasurementCount(double baseUnitCount, int additive, Double multiplier) {
@@ -24,19 +24,19 @@ public class Measurement {
 
     public Measurement expressedIn(MeasurementType newMeasurementType) {
         if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)) {
-            return new Measurement(newMeasurementType, (baseUnitCount -  newMeasurementType.additive) * newMeasurementType.toBaseMultiplier());
+            return new Measurement(newMeasurementType, (baseUnitCount -  newMeasurementType.additive) * newMeasurementType.toBaseMultiplier);
         }
         return new Measurement(MeasurementType.InvalidConversion, 0.0);
     }
 
     public Measurement plus(Measurement measurement) {
         Double totalBaseUnitCount = baseUnitCount + measurement.getBaseUnitCount();
-        Double newMeasurementCount = translateToMeasurementCount(totalBaseUnitCount, measurement.measurementType.additive, measurement.measurementType.toBaseMultiplier());
+        Double newMeasurementCount = translateToMeasurementCount(totalBaseUnitCount, measurement.measurementType.additive, measurement.measurementType.toBaseMultiplier);
         return new Measurement(measurement.measurementType, newMeasurementCount);
     }
 
     public double measurementUnitCount() {
-        return translateToMeasurementCount(baseUnitCount, measurementType.additive, measurementType.toBaseMultiplier());
+        return translateToMeasurementCount(baseUnitCount, measurementType.additive, measurementType.toBaseMultiplier);
     }
 
     public String toString() {

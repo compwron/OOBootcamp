@@ -14,7 +14,7 @@ public class UnitTranslationMain {
     }
 
     private static void printAllVolumeConversions() {
-        ArrayList<MeasurementType> volumeMeasurementTypes = measurementTypesOf(MeasurementClassification.Volume);
+        ArrayList<MeasurementType> volumeMeasurementTypes = measurementTypesOf(MeasurementType.MeasurementClassification.Volume);
 
         for (MeasurementType startingType : volumeMeasurementTypes) {
             for (MeasurementType endingType : volumeMeasurementTypes) {
@@ -29,7 +29,7 @@ public class UnitTranslationMain {
     }
 
     private static void printAllLengthConversions() {
-        ArrayList<MeasurementType> lengthMeasurementTypes = measurementTypesOf(MeasurementClassification.Length);
+        ArrayList<MeasurementType> lengthMeasurementTypes = measurementTypesOf(MeasurementType.MeasurementClassification.Length);
 
         for (MeasurementType startingType : lengthMeasurementTypes) {
             for (MeasurementType endingType : lengthMeasurementTypes) {
@@ -39,7 +39,7 @@ public class UnitTranslationMain {
         }
     }
 
-    private static ArrayList<MeasurementType> measurementTypesOf(MeasurementClassification measurementClassification) {
+    private static ArrayList<MeasurementType> measurementTypesOf(MeasurementType.MeasurementClassification measurementClassification) {
         ArrayList<MeasurementType> lengthMeasurementTypes = new ArrayList<MeasurementType>();
         for (MeasurementType measurementType : MeasurementType.values()) {
             if (measurementType.measurementClass.equals(measurementClassification)) {

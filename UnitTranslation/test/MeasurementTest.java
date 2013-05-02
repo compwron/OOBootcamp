@@ -66,7 +66,7 @@ public class MeasurementTest {
 
     @Test
     public void celsiusIsATemperature() {
-        assertThat(MeasurementType.Celsius.measurementClass, is(MeasurementClassification.Temperature));
+        assertThat(MeasurementType.Celsius.measurementClass, is(MeasurementType.MeasurementClassification.Temperature));
     }
 
     @Test
