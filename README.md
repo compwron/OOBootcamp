@@ -9,10 +9,31 @@ Other Bootcampers
 
 * https://github.com/a1russell/bills-bootcamp
 * https://github.com/abangser/ooBootCamp
+* https://github.com/BillSchofield/Quantity
 
 
 Class notes
 ===========
+
+1May2013
+reviewed Abby's code
+Talked about convergent design caused by TDD
+Reviewed composite units
+Upcoming: a series of work on collections
+Explanation of how hashcode and equals work
+Discussion of enum vs. static class vs. global variables
+Discussion of toString() vs displayValue() or equivalent (what if different accessors want a different text form of the data?) - in this case, don't use toString()
+Flexible code is better than performant code because flexible code can be understood well enough to make it easily performant (i.e. threading, caching)
+Adam's code is cool, it uses Java 8.1 lambdas
+
+New assignment: (simple version of upcoming collections assignment)
+* Given a collection of integers,
+** find the largest value
+** find the smallest value
+** don't use any libraries
+* Ditto for strings
+* Largest/smallest by string length
+* Extension: largest/smallest by first ASCII character of string
 
 26April2013
 reviewed Adam's code (graphs are awesome) https://github.com/a1russell/bills-bootcamp
