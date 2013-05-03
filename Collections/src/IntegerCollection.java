@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
-public class Collections {
-    private final ArrayList<Integer> data;
-    private Integer maximum;
+public class IntegerCollection {
 
-    public Collections(ArrayList<Integer> data) throws InvalidCollectionsOperation {
+    private final ArrayList<Integer> data;
+
+    public IntegerCollection(ArrayList<Integer> data) throws InvalidCollectionsOperation {
         if(data.size() == 0){
             throw new InvalidCollectionsOperation();
         }
         this.data = data;
     }
 
-    public int getOperationResult(ArrayList<Integer> data, CollectionsOperation operation) {
+    public int getOperationResult(CollectionsOperation operation) {
         Integer currentMostOperativelyCorrect = data.get(0);
         for(Integer integer : data){
             if (operation.isTrue(integer, currentMostOperativelyCorrect)){
