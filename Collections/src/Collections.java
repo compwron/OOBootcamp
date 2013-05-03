@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Collections {
     private final ArrayList<Integer> data;
+    private Integer maximum;
 
     public Collections(ArrayList<Integer> data) throws InvalidCollectionsOperation {
         if(data.size() == 0){
@@ -18,5 +19,9 @@ public class Collections {
             }
         }
         return currentSmallest;
+    }
+
+    public int getMaximum() {
+        return 0;
     }
 }

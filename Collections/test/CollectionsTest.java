@@ -7,6 +7,13 @@ import static junit.framework.Assert.assertEquals;
 public class CollectionsTest {
 
     @Test
+    public void shouldFindMaximumOfCollection() throws InvalidCollectionsOperation {
+        ArrayList<Integer> data = collectionWithIntegers(1, 2, 3);
+        Collections collection = new Collections(data);
+        assertEquals(3, collection.getMaximum());
+    }
+
+    @Test
     public void shouldReturnIntInCollectionAsMinWhenCollectionIsOneItemLong() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(1);
         Collections collection = new Collections(data);
@@ -17,7 +24,6 @@ public class CollectionsTest {
     public void shouldThrowInvalidCollectionsOperationWhenCollectionIsEmpty() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = new ArrayList<Integer>();
         Collections collection = new Collections(data);
-        collection.getMinimum(data);
     }
 
     @Test
