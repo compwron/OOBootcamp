@@ -28,8 +28,10 @@ public class CollectionsTest {
     }
 
     @Test
-    public void shouldReturnLowestIntegerInCollectionIfAskedMinOfCollectionWithTwoEqualSmallestValues(){
-
+    public void shouldReturnLowestIntegerInCollectionIfAskedMinOfCollectionWithTwoEqualSmallestValues() throws InvalidCollectionsOperation {
+        ArrayList<Integer> data = collectionWithIntegers(3, 2, 2);
+        Collections collection = new Collections(data);
+        assertEquals(2, collection.getMinimum(data));
     }
 
     private ArrayList<Integer> collectionWithIntegers(Integer... integers) throws InvalidCollectionsOperation {
