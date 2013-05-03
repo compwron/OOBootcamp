@@ -2,12 +2,13 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static junit.framework.Assert.assertEquals;
+
 public class CollectionsTest {
 
     @Test
     public void shouldReturnIntInCollectionAsMinWhenCollectionIsOneItemLong() throws InvalidCollectionsOperation {
-        ArrayList<Integer> data = new ArrayList<Integer>();
-        data.add(1);
+        ArrayList<Integer> data = collectionWithIntegers(1);
         Collections collection = new Collections(data);
         collection.getMinimum(data);
     }
@@ -20,8 +21,10 @@ public class CollectionsTest {
     }
 
     @Test
-    public void shouldReturnLowestIntegerInCollectionWhenAskedMin(){
-
+    public void shouldReturnLowestIntegerInMultiIntegerCollectionWhenAskedMin() throws InvalidCollectionsOperation {
+        ArrayList<Integer> data = collectionWithIntegers(2, 3);
+        Collections collection = new Collections(data);
+        assertEquals(2, collection.getMinimum(data));
     }
 
     @Test
@@ -29,11 +32,11 @@ public class CollectionsTest {
 
     }
 
-    private Collections collectionWithIntegers(Integer... integers) throws InvalidCollectionsOperation {
+    private ArrayList<Integer> collectionWithIntegers(Integer... integers) throws InvalidCollectionsOperation {
         ArrayList<Integer> data = new ArrayList<Integer>();
         for (Integer integer : integers){
             data.add(integer);
         }
-        return new Collections(data);
+        return data;
     }
 }

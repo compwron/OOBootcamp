@@ -11,6 +11,12 @@ public class Collections {
     }
 
     public int getMinimum(ArrayList<Integer> data) {
-        return data.get(0);
+        Integer currentSmallest = data.get(0);
+        for(Integer integer : data){
+            if (integer < currentSmallest){
+                currentSmallest = integer;
+            }
+        }
+        return currentSmallest;
     }
 }
