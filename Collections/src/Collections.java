@@ -11,23 +11,13 @@ public class Collections {
         this.data = data;
     }
 
-    public int getMinimum(ArrayList<Integer> data) {
-        Integer currentSmallest = data.get(0);
+    public int getOperationResult(ArrayList<Integer> data, CollectionsOperation operation) {
+        Integer currentMostOperativelyCorrect = data.get(0);
         for(Integer integer : data){
-            if (integer < currentSmallest){
-                currentSmallest = integer;
+            if (operation.isTrue(integer, currentMostOperativelyCorrect)){
+                currentMostOperativelyCorrect = integer;
             }
         }
-        return currentSmallest;
-    }
-
-    public int getMaximum() {
-        Integer currentLargest = data.get(0);
-        for(Integer integer : data){
-            if (integer > currentLargest){
-                currentLargest = integer;
-            }
-        }
-        return currentLargest;
+        return currentMostOperativelyCorrect;
     }
 }
