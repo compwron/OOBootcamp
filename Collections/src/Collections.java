@@ -22,6 +22,12 @@ public class Collections {
     }
 
     public int getMaximum() {
-        return 0;
+        Integer currentLargest = data.get(0);
+        for(Integer integer : data){
+            if (integer > currentLargest){
+                currentLargest = integer;
+            }
+        }
+        return currentLargest;
     }
 }
