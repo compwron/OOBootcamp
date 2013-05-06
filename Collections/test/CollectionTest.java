@@ -4,41 +4,41 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
 
-public class IntegerCollectionTest {
+public class CollectionTest {
 
 
 
     @Test
     public void shouldFindMaximumOfCollection() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(1, 2, 3);
-        IntegerCollection collection = new IntegerCollection(data);
+        Collection collection = new Collection(data);
         assertEquals(3, collection.getOperationResult(CollectionsOperation.Maximum));
     }
 
     @Test
     public void shouldReturnIntInCollectionAsMinWhenCollectionIsOneItemLong() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(1);
-        IntegerCollection collection = new IntegerCollection(data);
+        Collection collection = new Collection(data);
         collection.getOperationResult(CollectionsOperation.Minimum);
     }
 
     @Test(expected=InvalidCollectionsOperation.class)
     public void shouldThrowInvalidCollectionsOperationWhenCollectionIsEmpty() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = new ArrayList<Integer>();
-        new IntegerCollection(data);
+        new Collection(data);
     }
 
     @Test
     public void shouldReturnLowestIntegerInMultiIntegerCollectionWhenAskedMin() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(2, 3);
-        IntegerCollection collection = new IntegerCollection(data);
+        Collection collection = new Collection(data);
         assertEquals(2, collection.getOperationResult(CollectionsOperation.Minimum));
     }
 
     @Test
     public void shouldReturnLowestIntegerInCollectionIfAskedMinOfCollectionWithTwoEqualSmallestValues() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(3, 2, 2);
-        IntegerCollection collection = new IntegerCollection(data);
+        Collection collection = new Collection(data);
         assertEquals(2, collection.getOperationResult(CollectionsOperation.Minimum));
     }
 
