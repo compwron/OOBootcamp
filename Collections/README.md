@@ -5,6 +5,9 @@ Prompt
 * * find the largest value
 * * find the smallest value
 * * don't use any libraries
-* Ditto for strings
-* Largest/smallest by string length
-* Extension: largest/smallest by first ASCII character of string
+* Ditto for strings (by alphabetical)
+
+Round 2
+===========
+
+* Find biggest number not over given number
