@@ -11,7 +11,17 @@ public class StringCollection {
         this.stringData = data;
     }
 
-    public String getOperationResult(CollectionsOperation operation) {
+    public String getAlphabeticalOperationResult(CollectionsOperation operation) {
+        String mostOperationallyCorrect = stringData.get(0);
+        for(String current : stringData){
+            if (operation.isTrue(Character.getNumericValue(current.charAt(0)), Character.getNumericValue(mostOperationallyCorrect.charAt(0)))){
+                mostOperationallyCorrect = current;
+            }
+        }
+        return mostOperationallyCorrect;
+    }
+
+    public String getSizeOperationResult(CollectionsOperation operation) {
         String mostOperationallyCorrectString = stringData.get(0);
         for(String current : stringData){
             if (operation.isTrue(current.length(), mostOperationallyCorrectString.length())){

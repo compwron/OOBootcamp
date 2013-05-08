@@ -7,6 +7,10 @@ public enum CollectionsOperation {
         public boolean isTrue(Integer current, Integer currentMostOperativelyCorrect) {
             return current > currentMostOperativelyCorrect;
         }
+    }, AlphabeticMaximum {
+        public boolean isTrue(Integer current, Integer currentMostOperativelyCorrect) {
+            return current > currentMostOperativelyCorrect;
+        }
     };
     public abstract boolean isTrue(Integer integer, Integer currentMostOperativelyCorrect);
 }
