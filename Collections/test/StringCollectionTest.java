@@ -7,7 +7,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class StringCollectionTest {
     @Test
-    public void shouldFindLargestStringByFirstLetterAlphebetization() throws InvalidCollectionsOperation {
+    public void shouldFindLargestStringByFirstLetterAlphabetization() throws InvalidCollectionsOperation {
         ArrayList<String> data = collectionWithString("a", "b", "c");
         StringCollection collection = new StringCollection(data);
         assertThat(collection.getAlphabeticalOperationResult(CollectionsOperation.AlphabeticMaximum), is("c"));
@@ -20,7 +20,7 @@ public class StringCollectionTest {
         assertThat(collection.getSizeOperationResult(CollectionsOperation.Maximum), is("aaa"));
     }
 
-    private ArrayList<String> collectionWithString(String... strings) {
+    private ArrayList<String> collectionWithString(String... strings) { // undup
         ArrayList<String> data = new ArrayList<String>();
         for (String string : strings){
             data.add(string);

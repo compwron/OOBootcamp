@@ -9,7 +9,7 @@ public class CollectionTest {
 
 
     @Test
-    public void shouldFindMaximumOfCollection() throws InvalidCollectionsOperation {
+    public void shouldFindMaximumOfCollectionWhenCollectionhasMoreThanOneItem() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(1, 2, 3);
         Collection collection = new Collection(data);
         assertEquals(3, collection.getOperationResult(CollectionsOperation.Maximum));
@@ -38,10 +38,11 @@ public class CollectionTest {
     @Test
     public void shouldReturnLowestIntegerInCollectionIfAskedMinOfCollectionWithTwoEqualSmallestValues() throws InvalidCollectionsOperation {
         ArrayList<Integer> data = collectionWithIntegers(3, 2, 2);
-        Collection collection = new Collection(data);
+        Collection collection = new Collection(data); // maybe take in vararg ints?
         assertEquals(2, collection.getOperationResult(CollectionsOperation.Minimum));
     }
 
+    // newArrayList()
     private ArrayList<Integer> collectionWithIntegers(Integer... integers) throws InvalidCollectionsOperation {
         ArrayList<Integer> data = new ArrayList<Integer>();
         for (Integer integer : integers){

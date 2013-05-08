@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public class Collection {
 
     private final ArrayList<Integer> data;
+//    Collections.addAll(
 
-    public Collection(ArrayList<Integer> data) throws InvalidCollectionsOperation {
+    public Collection(ArrayList<Integer> data) throws InvalidCollectionsOperation { // public class MinAndMaxFinder<T extends Comparable<T>> {
         if(data.size() == 0){
-            throw new InvalidCollectionsOperation();
+            throw new InvalidCollectionsOperation(); // guava ok empty, element not found min
         }
         this.data = data;
     }

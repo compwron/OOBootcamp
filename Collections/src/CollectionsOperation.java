@@ -1,5 +1,5 @@
 public enum CollectionsOperation {
-    Minimum {
+    Minimum { // each strategy could be a class?
         public boolean isTrue(Integer current, Integer currentMostOperativelyCorrect) {
             return current < currentMostOperativelyCorrect;
         }
