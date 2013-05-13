@@ -10,4 +10,4 @@ Prompt
 Round 2
 ===========
 
-* Find biggest number not over given number
+* Find biggest number not over given number (how does that translate to strings?)

@@ -13,7 +13,7 @@ public class StringCollection {
 
     public String getAlphabeticalOperationResult(CollectionsOperation operation) {
         String mostOperationallyCorrect = stringData.get(0);
-        for(String current : stringData){ // candidate, champion, challenger
+        for(String current : stringData){ // champion, challenger
             // string compareTo
             if (operation.isTrue(Character.getNumericValue(current.charAt(0)), Character.getNumericValue(mostOperationallyCorrect.charAt(0)))){
                 mostOperationallyCorrect = current;
