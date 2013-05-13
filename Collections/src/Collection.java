@@ -17,7 +17,16 @@ public class Collection {
         return currentMostOperativelyCorrect;
     }
 
-    public int getLargestUnder(int i) {
-        return 0;
+    public int getLargestUnder(int threshold) {
+        int largestUnderThreshhold = 0;
+        for (int number : data){
+            if (number < threshold){
+                if (number > largestUnderThreshhold){
+                    largestUnderThreshhold = number;
+                }
+            }
+        }
+//        what happens when none is found? Throw?
+        return largestUnderThreshhold;
     }
 }
