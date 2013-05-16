@@ -6,6 +6,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class CollectionTest {
 
     @Test
+    public void shouldSeeLatestStringInAlphabetWhichIsNotAfterCatAsApple() throws InvalidCollectionsOperation {
+        Collection collection = new Collection("Cat, Apple, Baz");
+        assertThat(collection.getLargestUnder("Cat"), is("Baz"));
+    }
+
+    @Test
     public void shouldSee5AsLargestNumberInListWhichIsNotLargerThan6() throws InvalidCollectionsOperation {
         Collection collection = new Collection(new Integer[]{3, 3, 5, 6, 8});
         assertThat(collection.getLargestUnder(6), is(5));
