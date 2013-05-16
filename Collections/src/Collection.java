@@ -10,13 +10,13 @@ public class Collection {
         this.data = order(data);
     }
 
-    public Collection(String... stringData) {
-        this.stringData = order(stringData);
+    public Collection(String... strings) {
+        this.stringData = order(strings);
     }
 
-    private TreeSet<String> order(String[] data) {
+    private TreeSet<String> order(String[] strings) {
         TreeSet<String> sortedData = new TreeSet<String>();
-        for (String datum : data) {
+        for (String datum : strings) {
             sortedData.add(datum);
         }
         return sortedData;
@@ -59,7 +59,7 @@ public class Collection {
     public String getLargestUnder(String threshold) {
         String champion = "";
         for (String challenger : stringData){
-            if ((challenger.compareTo(champion) < 0) && (challenger.compareTo(threshold) > 0)) {
+            if ((challenger.compareTo(champion) > 0) && (challenger.compareTo(threshold) < 0)) {
                 champion = challenger;
             }
         }
