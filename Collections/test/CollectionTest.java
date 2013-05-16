@@ -38,7 +38,7 @@ public class CollectionTest {
     @Test
     public void shouldFindLargestStringByFirstLetterAlphabetization() throws InvalidCollectionsOperation {
         Collection collection = new Collection("a", "b", "c");
-        assertThat(collection.stringMin(), is("c"));
+        assertThat(collection.stringMax(), is("c"));
     }
 
     @Test
