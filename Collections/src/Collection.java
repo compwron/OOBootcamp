@@ -63,6 +63,6 @@ public class Collection {
                 champion = challenger;
             }
         }
-        return champion;
+        return champion == "" ? null : champion;
     }
 }

@@ -1,9 +1,16 @@
 import org.junit.Test;
 
+import static junit.framework.Assert.assertNull;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CollectionTest {
+
+    @Test
+    public void shouldReturnNullWhenNoItemUnderThresholdIsInCollection() throws InvalidCollectionsOperation {
+        Collection collection = new Collection("Cat", "Apple", "Baz");
+        assertNull(collection.getLargestUnder("Apple"));
+    }
 
     @Test
     public void shouldSeeLatestStringInAlphabetWhichIsNotAfterCatAsApple() throws InvalidCollectionsOperation {
