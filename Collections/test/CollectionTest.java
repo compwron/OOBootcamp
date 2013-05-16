@@ -34,4 +34,16 @@ public class CollectionTest {
         Collection collection = new Collection(new Integer[]{3, 2, 2});
         assertThat(collection.min(), is(2));
     }
+
+    @Test
+    public void shouldFindLargestStringByFirstLetterAlphabetization() throws InvalidCollectionsOperation {
+        Collection collection = new Collection("a", "b", "c");
+        assertThat(collection.stringMin(), is("c"));
+    }
+
+    @Test
+    public void shouldFindLargestStringByCharacterCount() throws InvalidCollectionsOperation {
+        Collection collection = new Collection("a", "aa", "aaa");
+        assertThat(collection.stringMax(), is("aaa"));
+    }
 }
