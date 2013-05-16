@@ -11,3 +11,8 @@ Round 2
 ===========
 
 * Find biggest number not over given number (how does that translate to strings?)
+
+Round 3
+===========
+
+*  Compare rectangles (on area) (using existing rectangle class)
