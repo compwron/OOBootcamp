@@ -1,23 +1,35 @@
+import java.util.TreeSet;
+
 public class Collection {
 
 
-    private final Integer[] data;
+    private final TreeSet<Integer> data;
 
     public Collection(Integer[] data) {
-        this.data = data;
+        this.data = order(data);
     }
 
-    public Object getOperationResult(CollectionsOperation operation) {
-        Integer currentMostOperativelyCorrect = data[0];
-        for(Integer integer : data){
-            if (operation.isTrue(integer, currentMostOperativelyCorrect)){
-                currentMostOperativelyCorrect = integer;
-            }
+    private TreeSet<Integer> order(Integer[] data) {
+        TreeSet<Integer> sortedData = new TreeSet<Integer>();
+        for (Integer datum : data){
+            sortedData.add(datum);
         }
-        return currentMostOperativelyCorrect;
+        return sortedData;
+    }
+
+    public int min(){
+        return data.first();
+    }
+
+    public int max(){
+        return data.last();
     }
 
     public int getLargestUnder(int threshold) {
+//        if (data.contains(threshold)){
+//            data.
+//        }
+
         int largestUnderThreshhold = 0;
         for (int number : data){
             if (number < threshold){

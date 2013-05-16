@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -13,26 +12,26 @@ public class CollectionTest {
     }
 
     @Test
-    public void shouldFindMaximumOfCollectionWhenCollectionhasMoreThanOneItem() throws InvalidCollectionsOperation {
+    public void shouldFindMaximumOfCollectionWhenCollectionHasMoreThanOneItem() throws InvalidCollectionsOperation {
         Collection collection = new Collection(new Integer[]{1, 2, 3});
-        assertEquals(3, collection.getOperationResult(CollectionsOperation.Maximum));
+        assertThat(collection.max(), is(3));
     }
 
     @Test
     public void shouldReturnIntInCollectionAsMinWhenCollectionIsOneItemLong() throws InvalidCollectionsOperation {
         Collection collection = new Collection(new Integer[]{1});
-        collection.getOperationResult(CollectionsOperation.Minimum);
+        assertThat(collection.min(), is(1));
     }
 
     @Test
     public void shouldReturnLowestIntegerInMultiIntegerCollectionWhenAskedMin() throws InvalidCollectionsOperation {
         Collection collection = new Collection(new Integer[]{2, 3});
-        assertEquals(2, collection.getOperationResult(CollectionsOperation.Minimum));
+        assertThat(collection.min(), is(2));
     }
 
     @Test
     public void shouldReturnLowestIntegerInCollectionIfAskedMinOfCollectionWithTwoEqualSmallestValues() throws InvalidCollectionsOperation {
         Collection collection = new Collection(new Integer[]{3, 2, 2});
-        assertEquals(2, collection.getOperationResult(CollectionsOperation.Minimum));
+        assertThat(collection.min(), is(2));
     }
 }
