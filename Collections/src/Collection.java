@@ -38,25 +38,17 @@ public class Collection {
         return data.last();
     }
 
-    public String stringMin() {
-        return stringData.first();
-    }
-
     public String stringMax() {
         return stringData.last();
     }
 
 
-    public int getLargestUnder(int threshold) {
-//        if (data.contains(threshold)){
-//            data.
-//        }
-
+    public int getLargestUnder(int champion) {
         int largestUnderThreshhold = 0;
-        for (int number : data) {
-            if (number < threshold) {
-                if (number > largestUnderThreshhold) {
-                    largestUnderThreshhold = number;
+        for (int challenger : data) {
+            if (challenger < champion) {
+                if (challenger > largestUnderThreshhold) {
+                    largestUnderThreshhold = challenger;
                 }
             }
         }
@@ -65,6 +57,12 @@ public class Collection {
     }
 
     public String getLargestUnder(String threshold) {
-       return "";
+        String champion = "";
+        for (String challenger : stringData){
+            if ((challenger.compareTo(champion) < 0) && (challenger.compareTo(threshold) > 0)) {
+                champion = challenger;
+            }
+        }
+        return champion;
     }
 }

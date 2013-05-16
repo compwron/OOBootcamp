@@ -7,7 +7,7 @@ public class CollectionTest {
 
     @Test
     public void shouldSeeLatestStringInAlphabetWhichIsNotAfterCatAsApple() throws InvalidCollectionsOperation {
-        Collection collection = new Collection("Cat, Apple, Baz");
+        Collection collection = new Collection("Cat", "Apple", "Baz");
         assertThat(collection.getLargestUnder("Cat"), is("Baz"));
     }
 
