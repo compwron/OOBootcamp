@@ -16,3 +16,4 @@ Round 3
 ===========
 
 *  Compare rectangles (on area) (using existing rectangle class)
+*  make a shopping list with quantities and names which, if you add 1 cup of sugar, 1 banana, and 1 cup of sugar, ends up with 2 cups of sugar and 1 banana. Use Java 7 (no libraries or Java 8- the point is to implement, not to make the language do it for you)
