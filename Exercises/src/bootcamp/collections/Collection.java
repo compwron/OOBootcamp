@@ -9,7 +9,7 @@ import java.util.TreeSet;
 
 public class Collection {
 
-    private List<GraphRectangle> rectangles = new ArrayList<GraphRectangle>();
+    private List<Rectangle> rectangles = new ArrayList<Rectangle>();
     private TreeSet<Integer> data = new TreeSet<Integer>();
     private TreeSet<String> stringData = new TreeSet<String>();
 
@@ -82,7 +82,7 @@ public class Collection {
         return champion == "" ? null : champion;
     }
 
-    public GraphRectangle rectangleMax() {
+    public Rectangle rectangleMax() {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }
