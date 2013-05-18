@@ -1,11 +1,13 @@
 package bootcamp.bootcamp.shoppinglist;
 
 public class ShoppingList {
-    public ShoppingList(ShoppingItem bananas) {
+    private final ShoppingItem shoppingItem;
 
+    public ShoppingList(ShoppingItem shoppingItem) {
+        this.shoppingItem = shoppingItem;
     }
 
     public int countOf(String shoppingItemName) {
-        return 0;  //To change body of created methods use File | Settings | File Templates.
+        return shoppingItem.count;
     }
 }

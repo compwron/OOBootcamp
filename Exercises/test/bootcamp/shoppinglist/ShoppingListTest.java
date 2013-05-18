@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ShoppingListTest {
     @Test
-    public void shoppingListShouldContainItemWithCount() {
+    public void shoppingListShouldKnowCountOfItemInList() {
         ShoppingList shoppingList = new ShoppingList(new ShoppingItem("bananas", 1));
         assertThat(shoppingList.countOf("bananas"), is(1));
     }
