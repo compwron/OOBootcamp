@@ -3,7 +3,7 @@ package bootcamp.shapes;
 public class Rectangle {
     protected Double area;
 
-    public Rectangle(){
+    public Rectangle() {
         this.area = 0.0;
     }
 
@@ -33,7 +33,7 @@ public class Rectangle {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Rectangle area: " + getArea();
     }
 }

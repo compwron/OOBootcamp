@@ -17,9 +17,9 @@ class RectangleSet {
         return totalArea;
     }
 
-    public String toString(){
+    public String toString() {
         String string = "[";
-        for (GraphRectangle graphRectangle : graphRectangles){
+        for (GraphRectangle graphRectangle : graphRectangles) {
             string += graphRectangle.toString() + ", ";
         }
         return string + "]";

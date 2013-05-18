@@ -16,7 +16,7 @@ class GraphRectangle extends Rectangle {
     }
 
     private void addToPoints(Point... points) {
-        for (Point point : points){
+        for (Point point : points) {
             this.points.add(point);
         }
     }
@@ -56,9 +56,9 @@ class GraphRectangle extends Rectangle {
         return line1.relativeCCW(point) == line2.relativeCCW(point);
     }
 
-    public String toString(){
+    public String toString() {
         String pointString = "";
-        for (Point point: points){
+        for (Point point : points) {
             pointString += point.getX() + "," + point.getY() + "|";
         }
         return "Area:" + getArea() + ";Points:" + pointString;

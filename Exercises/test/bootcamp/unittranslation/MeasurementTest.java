@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
@@ -23,7 +22,7 @@ public class MeasurementTest {
 // they're the same at -40
 
     @Test
-    public void addingFreezingInCelsiusToZeroFahrenheitEqualsFreezingInFahrenheit(){
+    public void addingFreezingInCelsiusToZeroFahrenheitEqualsFreezingInFahrenheit() {
         Measurement celsiusFreezing = new Measurement(MeasurementType.Celsius, 0.0);
         Measurement fahrenheitZero = new Measurement(MeasurementType.Fahrenheit, 0.0);
         assertThat(celsiusFreezing.plus(fahrenheitZero), is(new Measurement(MeasurementType.Fahrenheit, 32.0)));

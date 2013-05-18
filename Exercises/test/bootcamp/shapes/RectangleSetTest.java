@@ -1,7 +1,5 @@
 package bootcamp.shapes;
 
-import bootcamp.shapes.GraphRectangle;
-import bootcamp.shapes.RectangleSet;
 import org.junit.Test;
 
 import java.awt.*;

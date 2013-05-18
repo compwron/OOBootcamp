@@ -21,7 +21,7 @@ public class RectangleTest {
     }
 
     @Test
-    public void plainRectangleShouldHaveWidthLengthConstructorAndReturnArea(){
+    public void plainRectangleShouldHaveWidthLengthConstructorAndReturnArea() {
         assertThat(new Rectangle(1, 3).getArea(), is(3.0));
     }
 
@@ -66,7 +66,7 @@ public class RectangleTest {
     }
 
     @Test
-    public void rectangleToStringShouldContainPointsAndArea(){
+    public void rectangleToStringShouldContainPointsAndArea() {
         assertThat(graphRectangle.toString(), is("Area:6.0;Points:0.0,0.0|0.0,2.0|3.0,2.0|3.0,0.0|"));
     }
 }

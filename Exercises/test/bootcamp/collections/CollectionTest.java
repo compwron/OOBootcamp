@@ -10,13 +10,13 @@ import static org.junit.Assert.assertThat;
 public class CollectionTest {
 
     @Test
-    public void shouldReturnRectangleWithAreaOfThreeAsMinFromCollectionOrRectanglesWithAreasOfThreeAndSix(){
+    public void shouldReturnRectangleWithAreaOfThreeAsMinFromCollectionOrRectanglesWithAreasOfThreeAndSix() {
         Collection collection = new Collection(new Rectangle(1, 3), new Rectangle(2, 3));
         assertThat(collection.rectangleMin(), is(new Rectangle(1, 3)));
     }
 
     @Test
-    public void shouldReturnRectangleWithAreaOfSixAsMaxInListOfRectanglesWithAreasOfSixAndThree(){
+    public void shouldReturnRectangleWithAreaOfSixAsMaxInListOfRectanglesWithAreasOfSixAndThree() {
         Collection collection = new Collection(new Rectangle(1, 3), new Rectangle(2, 3));
         assertThat(collection.rectangleMax(), is(new Rectangle(2, 3)));
     }

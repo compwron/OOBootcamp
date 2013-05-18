@@ -67,7 +67,7 @@ public class Collection {
 
     public String getLargestUnder(String threshold) {
         String champion = "";
-        for (String challenger : stringData){
+        for (String challenger : stringData) {
             if ((challenger.compareTo(champion) > 0) && (challenger.compareTo(threshold) < 0)) {
                 champion = challenger;
             }
@@ -77,8 +77,8 @@ public class Collection {
 
     public Rectangle rectangleMax() {
         Rectangle champion = new Rectangle();
-        for (Rectangle challenger : rectangles){
-            if (challenger.getArea() > champion.getArea()){
+        for (Rectangle challenger : rectangles) {
+            if (challenger.getArea() > champion.getArea()) {
                 champion = challenger;
             }
         }
@@ -87,8 +87,8 @@ public class Collection {
 
     public Rectangle rectangleMin() {
         Rectangle champion = new Rectangle();
-        for (Rectangle challenger : rectangles){
-            if (challenger.getArea() < champion.getArea()){
+        for (Rectangle challenger : rectangles) {
+            if (challenger.getArea() < champion.getArea()) {
                 champion = challenger;
             }
         }
