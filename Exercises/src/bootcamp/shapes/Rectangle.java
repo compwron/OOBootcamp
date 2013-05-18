@@ -1,7 +1,7 @@
 package bootcamp.shapes;
 
 public class Rectangle {
-    private Double area;
+    protected Double area;
 
     public Rectangle(){
         this.area = 0.0;

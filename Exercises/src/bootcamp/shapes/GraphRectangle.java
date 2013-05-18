@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 class GraphRectangle extends Rectangle {
     final private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
-    private double area;
     private ArrayList<Point> points = new ArrayList<Point>();
 
     public GraphRectangle(Point point, Point point1, Point point2, Point point3) {
@@ -62,6 +61,6 @@ class GraphRectangle extends Rectangle {
         for (Point point: points){
             pointString += point.getX() + "," + point.getY() + "|";
         }
-        return "Area:" + area + ";Points:" + pointString;
+        return "Area:" + getArea() + ";Points:" + pointString;
     }
 }

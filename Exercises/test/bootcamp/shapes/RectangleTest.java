@@ -1,6 +1,5 @@
 package bootcamp.shapes;
 
-import bootcamp.shapes.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class GraphRectangleTest {
+public class RectangleTest {
     private GraphRectangle graphRectangle;
 
     @Before
@@ -23,7 +22,7 @@ public class GraphRectangleTest {
 
     @Test
     public void plainRectangleShouldHaveWidthLengthConstructorAndReturnArea(){
-        assertThat(new bootcamp.shapes.Rectangle(1, 3).getArea(), is(3.0));
+        assertThat(new Rectangle(1, 3).getArea(), is(3.0));
     }
 
     @Test

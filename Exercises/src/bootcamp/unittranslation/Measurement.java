@@ -1,14 +1,9 @@
 package bootcamp.unittranslation;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
-@EqualsAndHashCode
 public class Measurement {
-    @Getter
     private final double baseUnitCount;
 
-    @Getter
     private final MeasurementType measurementType;
 
     public Measurement(MeasurementType measurementType, double count) {
@@ -43,5 +38,13 @@ public class Measurement {
 
     public String toString() {
         return measurementUnitCount() + " " + measurementType;
+    }
+
+    public double getBaseUnitCount() {
+        return baseUnitCount;
+    }
+
+    public MeasurementType getMeasurementType() {
+        return measurementType;
     }
 }
