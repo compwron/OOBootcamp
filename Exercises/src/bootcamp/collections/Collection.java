@@ -1,11 +1,13 @@
 package bootcamp.collections;
 
+
+import bootcamp.shapes.Rectangle;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
 public class Collection {
-
 
     private List<GraphRectangle> rectangles = new ArrayList<GraphRectangle>();
     private TreeSet<Integer> data = new TreeSet<Integer>();
