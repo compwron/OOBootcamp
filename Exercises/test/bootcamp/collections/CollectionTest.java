@@ -1,7 +1,6 @@
 package bootcamp.collections;
 
 import bootcamp.shapes.Rectangle;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNull;
@@ -10,11 +9,10 @@ import static org.junit.Assert.assertThat;
 
 public class CollectionTest {
 
-    @Ignore
     @Test
     public void shouldReturnRectangleWithAreaOfSixAsMaxInListOfRectanglesWithAreasOfSixAndThree(){
         Collection collection = new Collection(new Rectangle(1, 3), new Rectangle(2, 3));
-        assertThat(collection.rectangleMax(), is(new Rectangle(2, 6)));
+        assertThat(collection.rectangleMax(), is(new Rectangle(2, 3)));
     }
 
     @Test

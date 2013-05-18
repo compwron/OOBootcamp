@@ -3,13 +3,11 @@ package bootcamp.collections;
 
 import bootcamp.shapes.Rectangle;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeSet;
 
 public class Collection {
 
-    private List<Rectangle> rectangles = new ArrayList<Rectangle>();
+    private Rectangle[] rectangles = new Rectangle[]{};
     private TreeSet<Integer> data = new TreeSet<Integer>();
     private TreeSet<String> stringData = new TreeSet<String>();
 
@@ -22,13 +20,8 @@ public class Collection {
     }
 
     public Collection(Rectangle... rectangles) {
-        this.rectangles = sorted(rectangles);
+        this.rectangles = rectangles;
     }
-
-    private List sorted(Rectangle[] graphRectangles) {
-        return new ArrayList<Rectangle>();
-    }
-
 
     private TreeSet<String> order(String[] strings) {
         TreeSet<String> sortedData = new TreeSet<String>();
@@ -83,6 +76,12 @@ public class Collection {
     }
 
     public Rectangle rectangleMax() {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+        Rectangle champion = new Rectangle();
+        for (Rectangle challenger : rectangles){
+            if (challenger.getArea() > champion.getArea()){
+                champion = challenger;
+            }
+        }
+        return champion;
     }
 }
