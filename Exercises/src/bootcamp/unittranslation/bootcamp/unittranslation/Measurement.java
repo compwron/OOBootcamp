@@ -1,3 +1,5 @@
+package bootcamp.unittranslation;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 

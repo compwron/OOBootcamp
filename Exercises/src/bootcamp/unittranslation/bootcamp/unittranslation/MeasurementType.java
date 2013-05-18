@@ -1,3 +1,5 @@
+package bootcamp.unittranslation;
+
 public enum MeasurementType {
     Feet(MeasurementClassification.Length, 1.0 / 12.0),
     Inches(MeasurementClassification.Length, 1.0),  // is base for Length

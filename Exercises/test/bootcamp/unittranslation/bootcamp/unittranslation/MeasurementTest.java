@@ -1,4 +1,8 @@
+package bootcamp.unittranslation;
+
 import org.hamcrest.CoreMatchers;
+import org.hamcrest.core.Is;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -67,7 +71,7 @@ public class MeasurementTest {
 
     @Test
     public void celsiusIsATemperature() {
-        assertThat(MeasurementType.Celsius.measurementClass, is(MeasurementType.MeasurementClassification.Temperature));
+        assertThat(MeasurementType.Celsius.measurementClass, Is.is(MeasurementType.MeasurementClassification.Temperature));
     }
 
     @Test
@@ -117,13 +121,13 @@ public class MeasurementTest {
 
     @Test
     public void MeasurementsWithSameValuesShouldBeEqual() {
-        assertEquals(new Measurement(MeasurementType.Inches, 1), new Measurement(MeasurementType.Inches, 1));
+        Assert.assertEquals(new Measurement(MeasurementType.Inches, 1), new Measurement(MeasurementType.Inches, 1));
     }
 
     @Test
     public void MeasurementShouldHaveTypeAndCount() {
         assertThat(oneFoot.measurementUnitCount(), is(1.0));
-        assertThat(oneFoot.getMeasurementType(), is(MeasurementType.Feet));
+        assertThat(oneFoot.getMeasurementType(), Is.is(MeasurementType.Feet));
     }
 
     @Test
