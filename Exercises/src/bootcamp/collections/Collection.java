@@ -84,4 +84,14 @@ public class Collection {
         }
         return champion;
     }
+
+    public Rectangle rectangleMin() {
+        Rectangle champion = new Rectangle();
+        for (Rectangle challenger : rectangles){
+            if (challenger.getArea() < champion.getArea()){
+                champion = challenger;
+            }
+        }
+        return champion;
+    }
 }
