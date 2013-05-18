@@ -47,4 +47,27 @@ public class Measurement {
     public MeasurementType getMeasurementType() {
         return measurementType;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Measurement that = (Measurement) o;
+
+        if (Double.compare(that.baseUnitCount, baseUnitCount) != 0) return false;
+        if (measurementType != that.measurementType) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(baseUnitCount);
+        result = (int) (temp ^ (temp >>> 32));
+        result = 31 * result + measurementType.hashCode();
+        return result;
+    }
 }
