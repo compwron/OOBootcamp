@@ -1,13 +1,16 @@
+package bootcamp.shapes;
+
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
 
-class Rectangle {
+class GraphRectangle extends Rectangle {
     final private ArrayList<Line2D.Float> borders = new ArrayList<Line2D.Float>();
     private double area;
     private ArrayList<Point> points = new ArrayList<Point>();
 
-    public Rectangle(Point point, Point point1, Point point2, Point point3) {
+    public GraphRectangle(Point point, Point point1, Point point2, Point point3) {
+        super();
         addToPoints(point, point1, point2, point3);
         setBorderLines(point, point1, point2, point3);
         setArea(point, point1, point2);
@@ -32,10 +35,6 @@ class Rectangle {
         borders.add(new Line2D.Float(point1, point2));
         borders.add(new Line2D.Float(point2, point3));
         borders.add(new Line2D.Float(point3, point));
-    }
-
-    public double getArea() {
-        return area;
     }
 
     public boolean contains(Point point) {

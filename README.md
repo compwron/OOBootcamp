@@ -37,7 +37,7 @@ New assignment: (simple version of upcoming collections assignment)
 
 26April2013
 reviewed Adam's code (graphs are awesome) https://github.com/a1russell/bills-bootcamp
-talked about composite pattern in game design https://en.wikipedia.org/wiki/Composite_pattern with fractal rectangles for area location
+talked about composite pattern in game design https://en.wikipedia.org/wiki/Composite_pattern with fractal graphRectangles for area location
 extension for week three: make Fahrenheit and Celsius work
 We paired on the code for a while
 

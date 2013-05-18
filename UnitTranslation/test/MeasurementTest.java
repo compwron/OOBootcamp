@@ -16,6 +16,7 @@ public class MeasurementTest {
         oneFoot = new Measurement(MeasurementType.Feet, 1.0);
         oneCup = new Measurement(MeasurementType.Cups, 1.0);
     }
+// they're the same at -40
 
     @Test
     public void addingFreezingInCelsiusToZeroFahrenheitEqualsFreezingInFahrenheit(){

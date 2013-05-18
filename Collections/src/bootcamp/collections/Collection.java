@@ -1,8 +1,13 @@
+package bootcamp.collections;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Collection {
 
 
+    private List<GraphRectangle> rectangles = new ArrayList<GraphRectangle>();
     private TreeSet<Integer> data = new TreeSet<Integer>();
     private TreeSet<String> stringData = new TreeSet<String>();
 
@@ -13,6 +18,15 @@ public class Collection {
     public Collection(String... strings) {
         this.stringData = order(strings);
     }
+
+    public Collection(Rectangle... rectangles) {
+        this.rectangles = sorted(rectangles);
+    }
+
+    private List sorted(Rectangle[] graphRectangles) {
+        return new ArrayList<Rectangle>();
+    }
+
 
     private TreeSet<String> order(String[] strings) {
         TreeSet<String> sortedData = new TreeSet<String>();
@@ -64,5 +78,9 @@ public class Collection {
             }
         }
         return champion == "" ? null : champion;
+    }
+
+    public GraphRectangle rectangleMax() {
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 }

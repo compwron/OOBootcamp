@@ -10,7 +10,7 @@ configurations {
 }
 
 sourceSets {
-    def projects = ['Rectangle', 'UnitTranslation', 'Collections']
+    def projects = ['GraphRectangle', 'UnitTranslation', 'Collections']
 
     main {
         compileClasspath += configurations.provided

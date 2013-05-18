@@ -1,3 +1,8 @@
+package bootcamp.collections;
+
+import bootcamp.collections.Collection;
+import bootcamp.collections.InvalidCollectionsOperation;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertNull;
@@ -5,6 +10,13 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CollectionTest {
+
+    @Ignore
+    @Test
+    public void shouldReturnRectangleWithAreaOfSixAsMaxInListOfRectanglesWithAreasOfSixAndThree(){
+        Collection collection = new Collection(new Rectangle(1, 3), new Rectangle(2, 3));
+        assertThat(collection.rectangleMax(), is(new Rectangle(2, 6)));
+    }
 
     @Test
     public void shouldReturnNullWhenNoItemUnderThresholdIsInCollection() throws InvalidCollectionsOperation {
