@@ -1,13 +1,19 @@
 package bootcamp.bootcamp.shoppinglist;
 
 public class ShoppingList {
-    private final ShoppingItem shoppingItem;
 
-    public ShoppingList(ShoppingItem shoppingItem) {
-        this.shoppingItem = shoppingItem;
+    private ShoppingItem[] shoppingItems;
+
+    public ShoppingList(ShoppingItem... shoppingItems) {
+        this.shoppingItems = shoppingItems;
     }
 
     public int countOf(String shoppingItemName) {
-        return shoppingItem.count;
+        for (ShoppingItem item : shoppingItems){
+            if (item.name().equals(shoppingItemName)){
+                return item.count;
+            }
+        }
+        return 0;
     }
 }

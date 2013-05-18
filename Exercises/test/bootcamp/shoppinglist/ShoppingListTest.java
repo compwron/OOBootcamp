@@ -15,6 +15,8 @@ public class ShoppingListTest {
     }
 
     @Test
-    public void shouldAddItemToShoppingList() {
+    public void shoppingListShouldKnowCountOfItemInListWhenThereAreMultipleTypesOfItemsInTheList() {
+        ShoppingList shoppingList = new ShoppingList(new ShoppingItem("bananas", 1), new ShoppingItem("milk", 2));
+        assertThat(shoppingList.countOf("milk"), is(2));
     }
 }

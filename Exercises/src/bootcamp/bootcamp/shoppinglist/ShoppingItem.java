@@ -1,11 +1,15 @@
 package bootcamp.bootcamp.shoppinglist;
 
 public class ShoppingItem {
-    private final String itemName;
+    private final String name;
     final int count;
 
-    public ShoppingItem(String bananas, int count) {
-        this.itemName = bananas;
+    public ShoppingItem(String itemName, int count) {
+        this.name = itemName;
         this.count = count;
+    }
+
+    public String name() {
+        return name;
     }
 }
