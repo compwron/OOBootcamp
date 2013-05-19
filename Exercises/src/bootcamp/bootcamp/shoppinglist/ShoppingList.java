@@ -26,6 +26,8 @@ public class ShoppingList {
             if (hasSameType(item, shoppingItems)){
                 compactedShoppingItems.add(firstItemWithSameTypeAs(item, shoppingItems));
                 compact(compactedShoppingItems);
+            } else {
+                compactedShoppingItems.add(item);
             }
         }
         return compactedShoppingItems;
