@@ -1,7 +1,5 @@
 package bootcamp.bootcamp.shoppinglist;
 
-import bootcamp.unittranslation.MeasurementType;
-
 public class ShoppingItem {
     private final String name;
     final int count;
@@ -15,7 +13,11 @@ public class ShoppingItem {
         return name;
     }
 
-    public MeasurementType units() {
-        return null;
+    public String units() {
+        return name();
+    }
+
+    public String toString(){
+        return name + " " + count;
     }
 }
