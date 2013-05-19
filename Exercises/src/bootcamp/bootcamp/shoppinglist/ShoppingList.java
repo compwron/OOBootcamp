@@ -20,23 +20,23 @@ public class ShoppingList {
     }
 
     private ArrayList<ShoppingItem> compact(Collection<ShoppingItem> shoppingItems) {
-//        find next item of same type as current item. if found, add and recurse.
-        ArrayList<ShoppingItem> compactedShoppingItems = new ArrayList<ShoppingItem>();
-        for (ShoppingItem item : shoppingItems){
+//        if list has another item with the same type, modify current item to equal the sum, and delete that item.
+        for(ShoppingItem item : shoppingItems){
             if (hasSameType(item, shoppingItems)){
-                compactedShoppingItems.add(firstItemWithSameTypeAs(item, shoppingItems));
-                compact(compactedShoppingItems);
-            } else {
-                compactedShoppingItems.add(item);
+                item.add(firstItemWithSameTypeAs(item, shoppingItems));
+                compactedList.addAll(allExcept(firstItemWithSameTypeAs(item, shoppingItems)));
+                compact(compactedlist);
             }
         }
-        return compactedShoppingItems;
+        return shoppingItems;
     }
 
     private boolean hasSameType(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
-        for (ShoppingItem possiblySame : shoppingItems){
-            if (! item.equals(possiblySame) && item.units().equals(possiblySame.units())){
-                return true;
+        for (ShoppingItem possibleMatch : shoppingItems){
+            if (!possibleMatch.equals(item)){
+                if (possibleMatch.units().equals(item.units())){
+                    return true;
+                }
             }
         }
         return false;
@@ -44,7 +44,7 @@ public class ShoppingList {
 
     private ShoppingItem firstItemWithSameTypeAs(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
         for (ShoppingItem possiblySame : shoppingItems){
-            if (! item.equals(possiblySame) && item.units().equals(possiblySame.units())){
+            if ((!item.equals(possiblySame)) && item.units().equals(possiblySame.units())){
                 return possiblySame;
             }
         }
