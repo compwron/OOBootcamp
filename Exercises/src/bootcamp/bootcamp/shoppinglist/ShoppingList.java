@@ -26,15 +26,21 @@ public class ShoppingList {
             if (hasSameType(item, shoppingItems)){
                 item.add(firstItemWithSameTypeAs(item, shoppingItems));
 
-                compactedList.addAll(allExcept(firstItemWithSameTypeAs(item, shoppingItems)));
+                compactedList.addAll(allExcept(firstItemWithSameTypeAs(item, shoppingItems), shoppingItems));
                 compact(compactedList);
             }
         }
         return shoppingItems;
     }
 
-    private Collection<ShoppingItem> allExcept(ShoppingItem shoppingItem) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
+    private Collection<ShoppingItem> allExcept(ShoppingItem shoppingItem, ArrayList<ShoppingItem> shoppingItems) {
+        ArrayList<ShoppingItem> allExcept = new ArrayList<ShoppingItem>();
+        for (ShoppingItem current : shoppingItems){
+            if(!current.equals(allExcept)){
+                allExcept.add(current);
+            }
+        }
+        return allExcept;  
     }
 
     private boolean hasSameType(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
