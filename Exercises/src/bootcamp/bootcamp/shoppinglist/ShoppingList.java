@@ -11,7 +11,7 @@ public class ShoppingList {
         this.shoppingItems = compact(makeArrayListOf(shoppingItems));
     }
 
-    private Collection<ShoppingItem> makeArrayListOf(ShoppingItem[] shoppingItems) {
+    private ArrayList<ShoppingItem> makeArrayListOf(ShoppingItem[] shoppingItems) {
         ArrayList<ShoppingItem> stuff = new ArrayList<ShoppingItem>();
         for (ShoppingItem shoppingItem : shoppingItems){
             stuff.add(shoppingItem);
@@ -19,16 +19,22 @@ public class ShoppingList {
         return stuff;
     }
 
-    private ArrayList<ShoppingItem> compact(Collection<ShoppingItem> shoppingItems) {
+    private ArrayList<ShoppingItem> compact(ArrayList<ShoppingItem> shoppingItems) {
 //        if list has another item with the same type, modify current item to equal the sum, and delete that item.
+        ArrayList<ShoppingItem> compactedList = new ArrayList<ShoppingItem>();
         for(ShoppingItem item : shoppingItems){
             if (hasSameType(item, shoppingItems)){
                 item.add(firstItemWithSameTypeAs(item, shoppingItems));
+
                 compactedList.addAll(allExcept(firstItemWithSameTypeAs(item, shoppingItems)));
-                compact(compactedlist);
+                compact(compactedList);
             }
         }
         return shoppingItems;
+    }
+
+    private Collection<ShoppingItem> allExcept(ShoppingItem shoppingItem) {
+        return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
     private boolean hasSameType(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
