@@ -26,17 +26,17 @@ public class ShoppingList {
             if (hasSameType(item, shoppingItems)){
                 item.add(firstItemWithSameTypeAs(item, shoppingItems));
 
-                compactedList.addAll(allExcept(firstItemWithSameTypeAs(item, shoppingItems), shoppingItems));
+                compactedList.addAll(allExcept(item, firstItemWithSameTypeAs(item, shoppingItems), shoppingItems));
                 compact(compactedList);
             }
         }
         return shoppingItems;
     }
 
-    private Collection<ShoppingItem> allExcept(ShoppingItem shoppingItem, ArrayList<ShoppingItem> shoppingItems) {
+    private Collection<ShoppingItem> allExcept(ShoppingItem original, ShoppingItem toBeDeleted, ArrayList<ShoppingItem> shoppingItems) {
         ArrayList<ShoppingItem> allExcept = new ArrayList<ShoppingItem>();
         for (ShoppingItem current : shoppingItems){
-            if(!current.equals(shoppingItem)){
+            if(!current.equals(toBeDeleted) && !current.equals(original)){
                 allExcept.add(current);
             }
         }

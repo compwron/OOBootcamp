@@ -21,7 +21,7 @@ public class ShoppingListTest {
     }
 
     @Test
-    public void shouldCoalesceItemsWithSameKey(){
+    public void shouldCompactItemsWithSameKey(){
         ShoppingList shoppingList = new ShoppingList(new ShoppingItem("bananas", 1), new ShoppingItem("bananas", 2));
         assertThat(shoppingList.countOf("bananas"), is(3));
     }
