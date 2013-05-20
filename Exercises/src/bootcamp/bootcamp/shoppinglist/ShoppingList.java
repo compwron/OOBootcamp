@@ -46,7 +46,7 @@ public class ShoppingList {
     private boolean hasSameType(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
         for (ShoppingItem possibleMatch : shoppingItems){
             if (!possibleMatch.equals(item)){
-                if (possibleMatch.units().equals(item.units())){
+                if (possibleMatch.isSameUnitsAs(item)){
                     return true;
                 }
             }
@@ -56,7 +56,7 @@ public class ShoppingList {
 
     private ShoppingItem firstItemWithSameTypeAs(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
         for (ShoppingItem possiblySame : shoppingItems){
-            if ((!item.equals(possiblySame)) && item.units().equals(possiblySame.units())){
+            if ((!item.equals(possiblySame)) && item.getUnits().equals(possiblySame.getUnits())){
                 return possiblySame;
             }
         }
@@ -67,8 +67,8 @@ public class ShoppingList {
 
     public int countOf(String shoppingItemName) {
         for (ShoppingItem item : shoppingItems){
-            if (item.name().equals(shoppingItemName)){
-                return item.count;
+            if (item.getUnits().equals(shoppingItemName)){
+                return item.getCount();
             }
         }
         return 0;

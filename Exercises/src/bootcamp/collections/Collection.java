@@ -88,7 +88,7 @@ public class Collection {
     public Rectangle rectangleMin() {
         Rectangle champion = new Rectangle();
         for (Rectangle challenger : rectangles) {
-            if (challenger.getArea() < champion.getArea()) {
+            if (challenger.hasLowerAreaThan(champion)) {
                 champion = challenger;
             }
         }

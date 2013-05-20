@@ -1,6 +1,11 @@
 package bootcamp.shapes;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+@EqualsAndHashCode
 public class Rectangle {
+    @Getter
     protected Double area;
 
     public Rectangle() {
@@ -11,29 +16,11 @@ public class Rectangle {
         this.area = width * height;
     }
 
-    public Double getArea() {
-        return area;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rectangle rectangle = (Rectangle) o;
-
-        if (!area.equals(rectangle.area)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return area.hashCode();
-    }
-
-    @Override
     public String toString() {
         return "Rectangle area: " + getArea();
+    }
+
+    public boolean hasLowerAreaThan(Rectangle other) {
+        return area.compareTo(other.getArea()) > 0;
     }
 }

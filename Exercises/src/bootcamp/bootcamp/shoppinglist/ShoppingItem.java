@@ -1,29 +1,30 @@
 package bootcamp.bootcamp.shoppinglist;
 
+import lombok.Getter;
+
 public class ShoppingItem {
-    private final String name;
-    int count;
+    @Getter
+    private final String units;
+
+    @Getter
+    private int count;
 
     public ShoppingItem(String itemName, int count) {
-        this.name = itemName;
+        this.units = itemName;
         this.count = count;
     }
 
-    public String name() {
-        return name;
-    }
-
-    public String units() {
-        return name();
-    }
-
     public String toString(){
-        return name + " " + count;
+        return units + " " + count;
     }
 
     public void add(ShoppingItem shoppingItem) {
-        if (name.equals(shoppingItem.name)){
-            count += shoppingItem.count;
+        if (units.equals(shoppingItem.units)){
+            count += shoppingItem.getCount();
         }
+    }
+
+    public boolean isSameUnitsAs(ShoppingItem item) {
+        return this.getUnits().equals(item.getUnits());
     }
 }
