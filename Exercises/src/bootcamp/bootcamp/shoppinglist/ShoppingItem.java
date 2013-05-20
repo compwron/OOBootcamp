@@ -2,7 +2,7 @@ package bootcamp.bootcamp.shoppinglist;
 
 public class ShoppingItem {
     private final String name;
-    final int count;
+    int count;
 
     public ShoppingItem(String itemName, int count) {
         this.name = itemName;
@@ -22,6 +22,8 @@ public class ShoppingItem {
     }
 
     public void add(ShoppingItem shoppingItem) {
-        //To change body of created methods use File | Settings | File Templates.
+        if (name.equals(shoppingItem.name)){
+            count += shoppingItem.count;
+        }
     }
 }
