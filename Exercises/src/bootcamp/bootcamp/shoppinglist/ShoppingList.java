@@ -36,11 +36,11 @@ public class ShoppingList {
     private Collection<ShoppingItem> allExcept(ShoppingItem shoppingItem, ArrayList<ShoppingItem> shoppingItems) {
         ArrayList<ShoppingItem> allExcept = new ArrayList<ShoppingItem>();
         for (ShoppingItem current : shoppingItems){
-            if(!current.equals(allExcept)){
+            if(!current.equals(shoppingItem)){
                 allExcept.add(current);
             }
         }
-        return allExcept;  
+        return allExcept;
     }
 
     private boolean hasSameType(ShoppingItem item, Collection<ShoppingItem> shoppingItems) {
