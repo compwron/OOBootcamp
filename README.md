@@ -47,6 +47,9 @@ Prompt: Shopping List
 ===========
 
 *  Make a shopping list with quantities and names which, if you add 1 cup of sugar, 1 banana, and 1 cup of sugar, ends up with 2 cups of sugar and 1 banana. Use Java 7 (no libraries or Java 8- the point is to implement, not to make the language do it for you)
+*  Should be able to print shopping list
+*  Assume that people will only try to add correct units
+*  Use existing Measurement code - if you don't have any, use Bill's at https://github.com/BillSchofield/Quantity
 
 
 Class notes

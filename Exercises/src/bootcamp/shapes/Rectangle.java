@@ -21,6 +21,6 @@ public class Rectangle {
     }
 
     public boolean hasLowerAreaThan(Rectangle other) {
-        return area.compareTo(other.getArea()) > 0;
+        return area.compareTo(other.getArea()) < 0;
     }
 }

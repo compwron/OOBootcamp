@@ -1,13 +1,14 @@
 package bootcamp.shoppinglist;
 
-import bootcamp.bootcamp.shoppinglist.ShoppingItem;
-import bootcamp.bootcamp.shoppinglist.ShoppingList;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ShoppingListTest {
+
+//    mock the item once it has behavior for cups of sugar vs vinegar.
+
     @Test
     public void shoppingListShouldKnowCountOfItemInList() {
         ShoppingList shoppingList = new ShoppingList(new ShoppingItem("bananas", 1));
@@ -25,4 +26,5 @@ public class ShoppingListTest {
         ShoppingList shoppingList = new ShoppingList(new ShoppingItem("bananas", 1), new ShoppingItem("bananas", 2));
         assertThat(shoppingList.countOf("bananas"), is(3));
     }
+
 }
