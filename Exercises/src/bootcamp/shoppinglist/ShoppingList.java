@@ -37,6 +37,10 @@ public class ShoppingList {
         return null;  //To change body of created methods use File | Settings | File Templates.
     }
 
+    public String printList() {
+        return "";
+    }
+
 //    private ArrayList<ShoppingItem> makeArrayListOf(ShoppingItem[] shoppingItems) {
 //        ArrayList<ShoppingItem> stuff = new ArrayList<ShoppingItem>();
 //        for (ShoppingItem shoppingItem : shoppingItems){

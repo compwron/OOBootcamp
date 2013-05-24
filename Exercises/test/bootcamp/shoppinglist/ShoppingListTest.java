@@ -45,4 +45,6 @@ public class ShoppingListTest {
         assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Quart, 5.0)));
     }
 
+//    must print shopping list
+
 }
