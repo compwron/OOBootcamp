@@ -7,9 +7,10 @@ public enum MeasurementType {
     Teaspoons(MeasurementClassification.Volume, 3.0),
     Tablespoons(MeasurementClassification.Volume, 1.0),  // is base for Volume
     Cups(MeasurementClassification.Volume, 1.0 / 16.0),
-    InvalidConversion(MeasurementClassification.Invalid, 1.0),
+    None(MeasurementClassification.Invalid, 1.0),
     Fahrenheit(MeasurementClassification.Temperature, 1.0),
-    Celsius(MeasurementClassification.Temperature, 5.0 / 9.0, 32);
+    Celsius(MeasurementClassification.Temperature, 5.0 / 9.0, 32),
+    Gallon(MeasurementClassification.Volume, 256.0); // 16 cups in a gallon, 16 tablespoons in a cup
 
     final MeasurementClassification measurementClass;
     public final int additive;

@@ -169,7 +169,7 @@ public class MeasurementTest {
     @Test()
     public void shouldReturnMeasurementWithTypeInvalidConversionWithCountOfZeroWhenAttemptingToTranslateAMeasurementToAMeasurement() {
         Measurement oneInch = new Measurement(MeasurementType.Inches, 1.0);
-        assertThat(oneInch.expressedIn(MeasurementType.Teaspoons), is(new Measurement(MeasurementType.InvalidConversion, 0.0)));
+        assertThat(oneInch.expressedIn(MeasurementType.Teaspoons), is(new Measurement(MeasurementType.None, 0.0)));
     }
 
     @Test()

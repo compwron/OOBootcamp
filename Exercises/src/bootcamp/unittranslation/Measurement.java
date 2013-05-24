@@ -23,7 +23,7 @@ public class Measurement {
         if (measurementType.measurementClass.equals(newMeasurementType.measurementClass)) {
             return new Measurement(newMeasurementType, (baseUnitCount - newMeasurementType.additive) * newMeasurementType.toBaseMultiplier);
         }
-        return new Measurement(MeasurementType.InvalidConversion, 0.0);
+        return new Measurement(MeasurementType.None, 0.0);
     }
 
     public Measurement plus(Measurement measurement) {

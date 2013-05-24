@@ -1,5 +1,7 @@
 package bootcamp.shoppinglist;
 
+import bootcamp.unittranslation.Measurement;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -68,12 +70,16 @@ public class ShoppingList {
 
 
 
-    public int countOf(String shoppingItemName) {
+    public Measurement amountOf(String shoppingItemName) {
         for (ShoppingItem item : shoppingItems){
-            if (item.getUnits().equals(shoppingItemName)){
+            if (item.isCombinableWith(shoppingItemName)){
                 return item.getCount();
             }
         }
         return 0;
+    }
+
+    public void add(ShoppingItem oneCupOfSugar) {
+
     }
 }
