@@ -11,6 +11,7 @@ import static org.junit.Assert.assertThat;
 public class ShoppingListTest {
     ShoppingList list;
     String milk = "milk";
+    String appleJuice = "apple juice";
 
     @Before
     public void setUp(){
@@ -25,6 +26,9 @@ public class ShoppingListTest {
 
     @Test
     public void shoppingListShouldKnowCountOfItemInListWhenThereAreMultipleTypesOfItemsInTheList() {
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 2.0), appleJuice));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallon, 1.0)));
     }
 
     @Test
