@@ -1,12 +1,13 @@
 package bootcamp.shapes;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
-@EqualsAndHashCode
+//@EqualsAndHashCode
 public class Rectangle {
-    @Getter
     protected Double area;
+
+    public Double getArea(){
+        return area;
+    }
 
     public Rectangle() {
         this.area = 0.0;

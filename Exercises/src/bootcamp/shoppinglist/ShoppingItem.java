@@ -1,28 +1,39 @@
 package bootcamp.shoppinglist;
 
-import lombok.Getter;
+import bootcamp.unittranslation.MeasurementType;
 
 public class ShoppingItem {
-    @Getter
-    private final String units;
+    private final UnitOfMeasurement unitOfMeasurement;
+
+    public ShoppingItem(int count, UnitOfMeasurement unitOfMeasurement) {
+        this.count = count;
+        this.unitOfMeasurement = unitOfMeasurement;
+    }
+
+    public ShoppingItem(String itemName, int count) {
+        this.unitOfMeasurement = new UnitOfMeasurement(itemName, MeasurementType.InvalidConversion);
+        this.count = count;
+    }
+
+    public String getUnits(){
+        return unitOfMeasurement.getGroceryType();
+    }
 
 //    should have cups of vinegar, cups of sugar
 
 
-    @Getter
     private int count;
 
-    public ShoppingItem(String itemName, int count) {
-        this.units = itemName;
-        this.count = count;
+    public int getCount(){
+        return count;
     }
 
     public String toString(){
-        return units + " " + count;
+        return unitOfMeasurement.getGroceryType() + " " + count;
     }
 
     public void add(ShoppingItem shoppingItem) {
-        if (units.equals(shoppingItem.units)){
+        if (unitOfMeasurement.getGroceryType().equals(shoppingItem.unitOfMeasurement.getGroceryType())){
             count += shoppingItem.getCount();
         }
     }
