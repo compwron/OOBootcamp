@@ -40,6 +40,9 @@ public class ShoppingListTest {
 
     @Test
     public void shouldAddUnitCountsForLikeItemsWhenTheyAreInDifferentUnits(){
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Quart, 1.0), milk));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Quart, 5.0)));
     }
 
 }
