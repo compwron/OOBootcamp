@@ -10,7 +10,7 @@ public enum MeasurementType {
     None(MeasurementClassification.Invalid, 1.0),
     Fahrenheit(MeasurementClassification.Temperature, 1.0),
     Celsius(MeasurementClassification.Temperature, 5.0 / 9.0, 32),
-    Gallon(MeasurementClassification.Volume, 256.0); // 16 cups in a gallon, 16 tablespoons in a cup
+    Gallon(MeasurementClassification.Volume, 1 / 256.0); // 16 cups in a gallon, 16 tablespoons in a cup
 
     final MeasurementClassification measurementClass;
     public final int additive;

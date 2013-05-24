@@ -16,12 +16,21 @@ public class ShoppingList {
     }
 
     public void add(ShoppingItem shoppingItem) {
-        this.shoppingItems.add(shoppingItem);
+        boolean foundItem = false;
+        for (ShoppingItem item : shoppingItems) {
+            if (item.isType(shoppingItem)) {
+                item.add(shoppingItem.getMeasurement());
+                foundItem = true;
+            }
+        }
+        if (!foundItem) {
+            this.shoppingItems.add(shoppingItem);
+        }
     }
 
     public Measurement amountOf(String type) {
-        for (ShoppingItem item : shoppingItems){
-            if(item.isType(type)){
+        for (ShoppingItem item : shoppingItems) {
+            if (item.isType(type)) {
                 return item.getMeasurement();
             }
         }

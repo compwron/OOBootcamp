@@ -52,12 +52,12 @@ public class UnitTranslationMain {
     }
 
     private static void printMultiUnitLengthAddition() {
-        Measurement oneInchAndTwoFeet = new Measurement(MeasurementType.Feet, 2.0).plus(new Measurement(MeasurementType.Inches, 1.0));
+        Measurement oneInchAndTwoFeet = new Measurement(MeasurementType.Feet, 2.0).add(new Measurement(MeasurementType.Inches, 1.0));
         System.out.print("\nTwo feet and one inch is: " + oneInchAndTwoFeet.toString());
     }
 
     private static void printMultiUnitVolumeAddition() {
-        Measurement oneCupAndTwoTableSpoons = new Measurement(MeasurementType.Cups, 1.0).plus(new Measurement(MeasurementType.Tablespoons, 2.0));
+        Measurement oneCupAndTwoTableSpoons = new Measurement(MeasurementType.Cups, 1.0).add(new Measurement(MeasurementType.Tablespoons, 2.0));
         System.out.println("\nOne cup and two tablespoons is: " + oneCupAndTwoTableSpoons.toString());
     }
 

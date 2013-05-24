@@ -28,15 +28,18 @@ public class ShoppingListTest {
     public void shoppingListShouldKnowCountOfItemInListWhenThereAreMultipleTypesOfItemsInTheList() {
         list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
         list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 2.0), appleJuice));
-        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallon, 1.0)));
+        assertThat(list.amountOf(appleJuice), is(new Measurement(MeasurementType.Gallon, 2.0)));
     }
 
     @Test
     public void shouldAddUnitCountsForLikeItems(){
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 2.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallon, 3.0)));
     }
 
     @Test
-    public void shouldCompactItemsWithSameKey(){
+    public void shouldAddUnitCountsForLikeItemsWhenTheyAreInDifferentUnits(){
     }
 
 }

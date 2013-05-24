@@ -26,9 +26,10 @@ public class Measurement {
         return new Measurement(MeasurementType.None, 0.0);
     }
 
-    public Measurement plus(Measurement measurement) {
+    public Measurement add(Measurement measurement) {
         Double totalBaseUnitCount = baseUnitCount + measurement.getBaseUnitCount();
         Double newMeasurementCount = translateToMeasurementCount(totalBaseUnitCount, measurement.measurementType.additive, measurement.measurementType.toBaseMultiplier);
+        // if the measurement being added is more than 1, does this work?
         return new Measurement(measurement.measurementType, newMeasurementCount);
     }
 

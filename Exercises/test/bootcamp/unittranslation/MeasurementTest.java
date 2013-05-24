@@ -25,8 +25,8 @@ public class MeasurementTest {
     public void addingFreezingInCelsiusToZeroFahrenheitEqualsFreezingInFahrenheit() {
         Measurement celsiusFreezing = new Measurement(MeasurementType.Celsius, 0.0);
         Measurement fahrenheitZero = new Measurement(MeasurementType.Fahrenheit, 0.0);
-        assertThat(celsiusFreezing.plus(fahrenheitZero), is(new Measurement(MeasurementType.Fahrenheit, 32.0)));
-        assertThat(fahrenheitZero.plus(celsiusFreezing), is(new Measurement(MeasurementType.Celsius, 0.0)));
+        assertThat(celsiusFreezing.add(fahrenheitZero), is(new Measurement(MeasurementType.Fahrenheit, 32.0)));
+        assertThat(fahrenheitZero.add(celsiusFreezing), is(new Measurement(MeasurementType.Celsius, 0.0)));
     }
 
     @Test
@@ -102,13 +102,13 @@ public class MeasurementTest {
 
     @Test
     public void addingOneCupAndOneTablespoonShouldBe17Tablespoons() {
-        Measurement oneCupAndOneTablespoon = oneCup.plus(new Measurement(MeasurementType.Tablespoons, 1.0));
+        Measurement oneCupAndOneTablespoon = oneCup.add(new Measurement(MeasurementType.Tablespoons, 1.0));
         assertThat(oneCupAndOneTablespoon, is(new Measurement(MeasurementType.Tablespoons, 17.0)));
     }
 
     @Test
     public void addingOneTablespoonAndOneTeaspoonShouldBe4Teaspoons() {
-        Measurement oneTablespoonAndOneTeaspoon = new Measurement(MeasurementType.Tablespoons, 1.0).plus(new Measurement(MeasurementType.Teaspoons, 1.0));
+        Measurement oneTablespoonAndOneTeaspoon = new Measurement(MeasurementType.Tablespoons, 1.0).add(new Measurement(MeasurementType.Teaspoons, 1.0));
         assertThat(oneTablespoonAndOneTeaspoon, is(new Measurement(MeasurementType.Teaspoons, 4.0)));
     }
 
@@ -179,7 +179,7 @@ public class MeasurementTest {
 
     @Test
     public void addingOneFootAndOneInchShouldBe13Inches() {
-        Measurement oneFootAndOneInch = oneFoot.plus(new Measurement(MeasurementType.Inches, 1.0));
+        Measurement oneFootAndOneInch = oneFoot.add(new Measurement(MeasurementType.Inches, 1.0));
         assertThat(oneFootAndOneInch, is(new Measurement(MeasurementType.Inches, 13.0)));
     }
 }
