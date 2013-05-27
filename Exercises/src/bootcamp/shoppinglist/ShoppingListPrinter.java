@@ -1,7 +1,7 @@
 package bootcamp.shoppinglist;
 
-import bootcamp.unittranslation.Measurement;
 import bootcamp.unittranslation.MeasurementType;
+import bootcamp.unittranslation.Measurement;
 
 public class ShoppingListPrinter {
     public static void main(String[] args) {

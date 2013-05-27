@@ -9,9 +9,10 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class ShoppingListTest {
-    ShoppingList list;
-    String milk = "milk";
-    String appleJuice = "apple juice";
+    private ShoppingList list;
+    private String milk = "milk";
+    private String appleJuice = "apple juice";
+    private String shoppingListHeader = "Shopping list:\n";
 
     @Before
     public void setUp(){
@@ -45,6 +46,27 @@ public class ShoppingListTest {
         assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Quart, 5.0)));
     }
 
-//    must print shopping list
+    @Test
+    public void shouldPrintShoppingListHeader(){
+        assertThat(list.printList(), is(shoppingListHeader));
+    }
 
+    @Test
+    public void shouldPrintShoppingListWithOneItem(){
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
+        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallon milk\n"));
+    }
+
+    @Test
+    public void shouldPrintShoppingListWithMultipleItems(){
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Quart, 1.0), appleJuice));
+        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallon milk\n1.0 Quart apple juice\n"));
+    }
+
+    @Test
+    public void shouldPrintShoppingListWithItemWhichHasNoUnitsOfMeasurement(){
+        list.add(new ShoppingItem(new Measurement(MeasurementType.None, 3.0), "bananas"));
+        assertThat(list.printList(), is(shoppingListHeader + "3.0 bananas\n"));
+    }
 }

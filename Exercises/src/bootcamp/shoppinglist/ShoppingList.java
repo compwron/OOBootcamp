@@ -1,6 +1,7 @@
 package bootcamp.shoppinglist;
 
 import bootcamp.unittranslation.Measurement;
+import bootcamp.unittranslation.MeasurementType;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,18 @@ public class ShoppingList {
     }
 
     public String printList() {
-        return "";
+        String list = "Shopping list:\n";
+        for (ShoppingItem item : shoppingItems){
+            list += measurement(item) + item.getType() + "\n";
+        }
+        return list;
+    }
+
+    private String measurement(ShoppingItem item) {
+        if (!item.getMeasurement().getMeasurementType().equals(MeasurementType.None)){
+            return item.getMeasurement().toString() + " ";
+        }
+        return item.getMeasurement().measurementUnitCount() + " ";
     }
 
 //    private ArrayList<ShoppingItem> makeArrayListOf(ShoppingItem[] shoppingItems) {
