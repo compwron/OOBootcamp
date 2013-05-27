@@ -21,29 +21,29 @@ public class ShoppingListTest {
 
     @Test
     public void shoppingListShouldKnowCountOfItemInList() {
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallon, 1.0)));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallons, 1.0)));
     }
 
     @Test
     public void shoppingListShouldKnowCountOfItemInListWhenThereAreMultipleTypesOfItemsInTheList() {
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 2.0), appleJuice));
-        assertThat(list.amountOf(appleJuice), is(new Measurement(MeasurementType.Gallon, 2.0)));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 2.0), appleJuice));
+        assertThat(list.amountOf(appleJuice), is(new Measurement(MeasurementType.Gallons, 2.0)));
     }
 
     @Test
     public void shouldAddUnitCountsForLikeItems(){
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 2.0), milk));
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallon, 3.0)));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 2.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Gallons, 3.0)));
     }
 
     @Test
     public void shouldAddUnitCountsForLikeItemsWhenTheyAreInDifferentUnits(){
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Quart, 1.0), milk));
-        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Quart, 5.0)));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Quarts, 1.0), milk));
+        assertThat(list.amountOf(milk), is(new Measurement(MeasurementType.Quarts, 5.0)));
     }
 
     @Test
@@ -53,15 +53,15 @@ public class ShoppingListTest {
 
     @Test
     public void shouldPrintShoppingListWithOneItem(){
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallon milk\n"));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallons milk\n"));
     }
 
     @Test
     public void shouldPrintShoppingListWithMultipleItems(){
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallon, 1.0), milk));
-        list.add(new ShoppingItem(new Measurement(MeasurementType.Quart, 1.0), appleJuice));
-        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallon milk\n1.0 Quart apple juice\n"));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Gallons, 1.0), milk));
+        list.add(new ShoppingItem(new Measurement(MeasurementType.Quarts, 1.0), appleJuice));
+        assertThat(list.printList(), is(shoppingListHeader + "1.0 Gallons milk\n1.0 Quarts apple juice\n"));
     }
 
     @Test
