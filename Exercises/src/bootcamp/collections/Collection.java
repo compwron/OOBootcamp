@@ -88,10 +88,11 @@ public class Collection {
     public Rectangle rectangleMin() {
         Rectangle champion = new Rectangle();
         for (Rectangle challenger : rectangles) {
-            if (challenger.hasLowerAreaThan(champion)) {
+            if (challenger.hasLowerAreaThan(champion) || champion.getArea() == 0.0) {
                 champion = challenger;
             }
         }
         return champion;
     }
+
 }

@@ -6,13 +6,14 @@ import org.junit.Test;
 import static junit.framework.Assert.assertNull;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class CollectionTest {
 
     @Test
     public void shouldReturnRectangleWithAreaOfThreeAsMinFromCollectionOrRectanglesWithAreasOfThreeAndSix() {
         Collection collection = new Collection(new Rectangle(1, 3), new Rectangle(2, 3));
-        assertThat(collection.rectangleMin(), is(new Rectangle(1, 3)));
+        assertTrue(collection.rectangleMin().getArea() == 3.0);
     }
 
     @Test
