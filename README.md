@@ -1,3 +1,9 @@
+Usage: 
+===========
+
+To run build and tests: gradle build
+To run coverage report: gradle cobertura
+
 Object Oriented Bootcamp
 ===========
 

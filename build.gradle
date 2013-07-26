@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+apply from: 'https://github.com/valkolovos/gradle_cobertura/raw/master/repo/gradle_cobertura/gradle_cobertura/1.0/coberturainit.gradle'
 
 repositories {
     mavenCentral()
@@ -9,9 +10,8 @@ configurations {
     provided
 }
 
+def projects = ['Exercises']
 sourceSets {
-    def projects = ['Exercises']
-
     main {
         compileClasspath += configurations.provided
 
@@ -25,6 +25,10 @@ sourceSets {
             srcDirs = projects.collect { project -> project + '/test' }
         }
     }
+}
+
+cobertura {
+    coverageSourceDirs = srcDirs = projects.collect { project -> project + '/src' }
 }
 
 idea {
