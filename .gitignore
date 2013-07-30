@@ -5,4 +5,4 @@ build
 .DS_Store
 .gradle/*
 *.ipr
-*.iws
+*.iwsant.out

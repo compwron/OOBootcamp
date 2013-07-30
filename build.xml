@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<project name="OOBootcamp" default="all" basedir=".">
+
+	<!-- Set up some properties -->
+	<property name="build.dir" location="build" />
+	<property name="lib.dir" location="lib" />
+	<property name="project.dir" location="Exercises" />
+	<property name="src.dir" location="${project.dir}/src" />
+	<property name="test.dir" location="${project.dir}/test" />
+	<property name="testoutput.dir" location="${build.dir}/testOutput" />
+
+	<!-- Set-up the rest of the properties -->
+	<target name="initProps" >
+		<!-- Load properties for the local host (if any) -->
+		<!-- <property file="build/build.${local.host.name}.properties" /> -->
+	</target>
+
+	<target name="clean" description="Delete any built files.">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<!-- <target name="makeBuildProps" depends="initProps" unless="build.props.exists">
+        <touch file="build/build.version"/>
+		<loadfile srcFile="build/build.version" property="build.ver">
+			<filterchain>
+				<striplinebreaks />
+			</filterchain>
+		</loadfile>
+		<propertyfile file="build.properties">
+			<entry key="build.version" type="string" value="${build.ver}" />
+			<entry key="build.date" type="date" value="now" pattern="EEE MMM dd HH:mm:ss zzz yyyy" />
+		</propertyfile>
+
+		<property file="build.properties" />
+	</target> -->
+
+	<target name="initDirs">
+		<mkdir dir="${build.dir}" />
+		<!-- <mkdir dir="${common.distrib.dir}" /> -->
+	</target>
+
+	<target name="compile" depends="initDirs" description="Compile source files.">
+		<javac destdir="${build.dir}" deprecation="off" nowarn="on" debug="on">
+			<classpath>
+				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
+				<pathelement location="${lib.dir}/junit-4.10.jar" />
+				<pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
+				 <!-- compile group: 'org.projectlombok', name: 'lombok', version: '0.11.+'
+    compile group: 'org.mockito', name: 'mockito-all', version: '1.8.4';
+    testCompile group: 'junit', name: 'junit', version: '4.+' -->
+			</classpath>
+			<src path="${src.dir}" />
+			<src path="${test.dir}" />
+			<include name="**/*.java" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compile">
+		<mkdir dir="${testoutput.dir}" />
+		<junit printsummary="true" failureproperty="junit.failure">
+			<formatter type="xml" />
+			<formatter type="brief" usefile="false" />
+			<classpath>
+				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
+				<pathelement location="${lib.dir}/junit-4.10.jar" />
+				<pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
+			</classpath>
+			<batchtest todir="${testoutput.dir}">
+				<fileset dir="${test.dir}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+		<fail if="junit.failure" message="Unit test(s) failed.  See reports!" />
+	</target>
+</project>
+
