@@ -4,11 +4,14 @@
 	<!-- Set up some properties -->
 	<property name="build.dir" location="build" />
 	<property name="build.classes.dir" location="${build.dir}/classes" />
+	<property name="cobertura.dir" location="${lib.dir}/cobertura" />
+	<property name="instrumented.dir" location="${build.dir}/cobertura/instrumentedClasses" />
 	<property name="lib.dir" location="lib" />
 	<property name="project.dir" location="Exercises" />
 	<property name="src.dir" location="${project.dir}/src" />
 	<property name="test.dir" location="${project.dir}/test" />
 	<property name="testoutput.dir" location="${build.dir}/testOutput" />
+	<property name="cobertura.ser.file" location="${build.dir}/cobertura.ser" />
 
 	<!-- Set-up the rest of the properties -->
 	<target name="initProps" >
@@ -37,7 +40,10 @@
 
 	<target name="initDirs">
 		<mkdir dir="${build.dir}" />
+
 		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${instrumented.dir}" />
+
 		<!-- <mkdir dir="${common.distrib.dir}" /> -->
 	</target>
 
@@ -75,6 +81,60 @@
 			</batchtest>
 		</junit>
 		<fail if="junit.failure" message="Unit test(s) failed.  See reports!" />
+	</target>
+
+	<property name="cobertura.dir" value="${build.dir}/cobertura" />
+
+	<path id="cobertura.classpath">
+	    <fileset dir="${cobertura.dir}">
+	        <include name="cobertura-2.0.2.jar" />
+	        <include name="lib/**/*.jar" />
+	    </fileset>
+	</path>
+
+	<mkdir dir="${cobertura.dir}" />
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+	<delete file="cobertura.ser" />
+
+	<cobertura-instrument todir="${instrumented.dir}">
+	    <ignore regex="org.apache.log4j.*" />
+	    <fileset dir="${build.classes.dir}">
+	        <include name="**/*.class" />
+	        <exclude name="**/*Test.class" />
+	    </fileset>
+	</cobertura-instrument>
+
+	<target name="cobertura-test" depends="compile">
+		<junit fork="yes" dir="${basedir}" failureProperty="test.failed">
+			<!--
+				Specify the name of the coverage data file to use.
+				The value specified below is the default.
+			-->
+			<sysproperty key="net.sourceforge.cobertura.datafile"
+				file="${cobertura.ser.file}" />
+
+			<!--
+				Note the classpath order: instrumented classes are before the
+				original (uninstrumented) classes.  This is important.
+			-->
+			<classpath location="${instrumented.dir}" />
+			<classpath location="${build.classes.dir}" />
+
+			<!--
+				The instrumented classes reference classes used by the
+				Cobertura runtime, so Cobertura and its dependencies
+				must be on your classpath.
+			-->
+			<classpath refid="cobertura.classpath" />
+
+			<formatter type="xml" />
+			<batchtest todir="${reports.xml.dir}">
+				<fileset dir="${src.dir}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
 	</target>
 </project>
 
