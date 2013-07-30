@@ -3,6 +3,7 @@
 
 	<!-- Set up some properties -->
 	<property name="build.dir" location="build" />
+	<property name="build.classes.dir" location="${build.dir}/classes" />
 	<property name="lib.dir" location="lib" />
 	<property name="project.dir" location="Exercises" />
 	<property name="src.dir" location="${project.dir}/src" />
@@ -36,11 +37,12 @@
 
 	<target name="initDirs">
 		<mkdir dir="${build.dir}" />
+		<mkdir dir="${build.classes.dir}" />
 		<!-- <mkdir dir="${common.distrib.dir}" /> -->
 	</target>
 
 	<target name="compile" depends="initDirs" description="Compile source files.">
-		<javac destdir="${build.dir}" deprecation="off" nowarn="on" debug="on">
+		<javac destdir="${build.classes.dir}" deprecation="off" nowarn="on" debug="on">
 			<classpath>
 				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
 				<pathelement location="${lib.dir}/junit-4.10.jar" />
@@ -61,6 +63,7 @@
 			<formatter type="xml" />
 			<formatter type="brief" usefile="false" />
 			<classpath>
+				<pathelement location="${build.classes.dir}" />
 				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
 				<pathelement location="${lib.dir}/junit-4.10.jar" />
 				<pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
