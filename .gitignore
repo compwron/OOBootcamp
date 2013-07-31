@@ -6,3 +6,4 @@ build
 .gradle/*
 *.ipr
 *.iwsant.out
+cobertura.ser

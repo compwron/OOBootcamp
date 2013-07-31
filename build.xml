@@ -1,125 +1,93 @@
-<?xml version="1.0"?>
-<project name="OOBootcamp" default="all" basedir=".">
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<!-- Set up some properties -->
-	<property name="build.dir" location="build" />
-	<property name="build.classes.dir" location="${build.dir}/classes" />
-	<property name="cobertura.dir" location="${lib.dir}/cobertura" />
-	<property name="instrumented.dir" location="${build.dir}/cobertura/instrumentedClasses" />
-	<property name="lib.dir" location="lib" />
-	<property name="project.dir" location="Exercises" />
-	<property name="src.dir" location="${project.dir}/src" />
-	<property name="test.dir" location="${project.dir}/test" />
-	<property name="testoutput.dir" location="${build.dir}/testOutput" />
-	<property name="cobertura.ser.file" location="${build.dir}/cobertura.ser" />
+<project name="cobertura.examples.basic" default="coverage" basedir=".">
 
-	<!-- Set-up the rest of the properties -->
-	<target name="initProps" >
-		<!-- Load properties for the local host (if any) -->
-		<!-- <property file="build/build.${local.host.name}.properties" /> -->
-	</target>
+	<description>
+    Cobertura - http://cobertura.sourceforge.net/
+    Copyright (C) 2003 jcoverage ltd.
+    Copyright (C) 2005 Mark Doliner &lt;thekingant@users.sourceforge.net&gt;
+    Copyright (C) 2006 Dan Godfrey
+    Cobertura is licensed under the GNU General Public License
+    Cobertura comes with ABSOLUTELY NO WARRANTY
+    </description>
 
-	<target name="clean" description="Delete any built files.">
-		<delete dir="${build.dir}" />
-	</target>
+	<property file="build.properties" />
 
-	<!-- <target name="makeBuildProps" depends="initProps" unless="build.props.exists">
-        <touch file="build/build.version"/>
-		<loadfile srcFile="build/build.version" property="build.ver">
-			<filterchain>
-				<striplinebreaks />
-			</filterchain>
-		</loadfile>
-		<propertyfile file="build.properties">
-			<entry key="build.version" type="string" value="${build.ver}" />
-			<entry key="build.date" type="date" value="now" pattern="EEE MMM dd HH:mm:ss zzz yyyy" />
-		</propertyfile>
+	<path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="cobertura-2.0.2.jar" />
+			<include name="lib/**/*.jar" />
+		</fileset>
+	</path>
 
-		<property file="build.properties" />
-	</target> -->
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
 
-	<target name="initDirs">
-		<mkdir dir="${build.dir}" />
-
-		<mkdir dir="${build.classes.dir}" />
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
 		<mkdir dir="${instrumented.dir}" />
-
-		<!-- <mkdir dir="${common.distrib.dir}" /> -->
+		<mkdir dir="${reports.xml.dir}" />
+		<mkdir dir="${reports.html.dir}" />
+		<mkdir dir="${coverage.xml.dir}" />
+		<mkdir dir="${coverage.summaryxml.dir}" />
+		<mkdir dir="${coverage.html.dir}" />
 	</target>
 
-	<target name="compile" depends="initDirs" description="Compile source files.">
-		<javac destdir="${build.classes.dir}" deprecation="off" nowarn="on" debug="on">
+	<target name="compile" depends="init">
+		<javac destdir="${classes.dir}" debug="yes">
+			<src path="${src.dir}" />
+            <src path="${test.dir}" />
+			<classpath refid="cobertura.classpath" />
 			<classpath>
 				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
-				<pathelement location="${lib.dir}/junit-4.10.jar" />
-				<pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
-				 <!-- compile group: 'org.projectlombok', name: 'lombok', version: '0.11.+'
-    compile group: 'org.mockito', name: 'mockito-all', version: '1.8.4';
-    testCompile group: 'junit', name: 'junit', version: '4.+' -->
+                <pathelement location="${lib.dir}/junit-4.10.jar" />
+                <pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
 			</classpath>
-			<src path="${src.dir}" />
-			<src path="${test.dir}" />
-			<include name="**/*.java" />
 		</javac>
 	</target>
 
-	<target name="test" depends="compile">
-		<mkdir dir="${testoutput.dir}" />
-		<junit printsummary="true" failureproperty="junit.failure">
-			<formatter type="xml" />
-			<formatter type="brief" usefile="false" />
-			<classpath>
-				<pathelement location="${build.classes.dir}" />
-				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
-				<pathelement location="${lib.dir}/junit-4.10.jar" />
-				<pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
-			</classpath>
-			<batchtest todir="${testoutput.dir}">
-				<fileset dir="${test.dir}">
-					<include name="**/*Test.java" />
-				</fileset>
-			</batchtest>
-		</junit>
-		<fail if="junit.failure" message="Unit test(s) failed.  See reports!" />
+	<target name="instrument" depends="init,compile">
+		<!--
+			Remove the coverage data file and any old instrumentation.
+		-->
+		<delete file="cobertura.ser"/>
+		<delete dir="${instrumented.dir}" />
+
+		<!--
+			Instrument the application classes, writing the
+			instrumented classes into ${build.instrumented.dir}.
+		-->
+		<cobertura-instrument todir="${instrumented.dir}">
+			<!--
+				The following line causes instrument to ignore any
+				source line containing a reference to log4j, for the
+				purposes of coverage reporting.
+			-->
+			<ignore regex="org.apache.log4j.*" />
+
+			<fileset dir="${classes.dir}">
+				<!--
+					Instrument all the application classes, but
+					don't instrument the test classes.
+				-->
+				<include name="**/*.class" />
+				<exclude name="**/*Test.class" />
+			</fileset>
+		</cobertura-instrument>
 	</target>
 
-	<property name="cobertura.dir" value="${build.dir}/cobertura" />
-
-	<path id="cobertura.classpath">
-	    <fileset dir="${cobertura.dir}">
-	        <include name="cobertura-2.0.2.jar" />
-	        <include name="lib/**/*.jar" />
-	    </fileset>
-	</path>
-
-	<mkdir dir="${cobertura.dir}" />
-	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
-
-	<delete file="cobertura.ser" />
-
-	<cobertura-instrument todir="${instrumented.dir}">
-	    <ignore regex="org.apache.log4j.*" />
-	    <fileset dir="${build.classes.dir}">
-	        <include name="**/*.class" />
-	        <exclude name="**/*Test.class" />
-	    </fileset>
-	</cobertura-instrument>
-
-	<target name="cobertura-test" depends="compile">
+	<target name="test" depends="init,compile">
 		<junit fork="yes" dir="${basedir}" failureProperty="test.failed">
-			<!--
-				Specify the name of the coverage data file to use.
-				The value specified below is the default.
-			-->
-			<sysproperty key="net.sourceforge.cobertura.datafile"
-				file="${cobertura.ser.file}" />
-
 			<!--
 				Note the classpath order: instrumented classes are before the
 				original (uninstrumented) classes.  This is important.
 			-->
 			<classpath location="${instrumented.dir}" />
-			<classpath location="${build.classes.dir}" />
+			<classpath location="${classes.dir}" />
+			<classpath>
+				<pathelement location="${lib.dir}/hamcrest-all-1.3.jar" />
+                <pathelement location="${lib.dir}/junit-4.10.jar" />
+                <pathelement location="${lib.dir}/mockito-all-1.9.5.jar" />
+			</classpath>
 
 			<!--
 				The instrumented classes reference classes used by the
@@ -129,12 +97,62 @@
 			<classpath refid="cobertura.classpath" />
 
 			<formatter type="xml" />
-			<batchtest todir="${reports.xml.dir}">
-				<fileset dir="${src.dir}">
+			<test name="${testcase}" todir="${reports.xml.dir}" if="testcase" />
+			<batchtest todir="${reports.xml.dir}" unless="testcase">
+				<fileset dir="${test.dir}">
 					<include name="**/*Test.java" />
 				</fileset>
 			</batchtest>
 		</junit>
-	</target>
-</project>
 
+		<junitreport todir="${reports.xml.dir}">
+			<fileset dir="${reports.xml.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${reports.html.dir}" />
+		</junitreport>
+	</target>
+
+	<target name="coverage-check">
+		<cobertura-check branchrate="34" totallinerate="100" />
+	</target>
+
+	<target name="coverage-report">
+		<!--
+			Generate an XML file containing the coverage data using
+			the "srcdir" attribute.
+		-->
+		<cobertura-report srcdir="${src.dir}" destdir="${coverage.xml.dir}" format="xml" />
+	</target>
+
+	<target name="summary-coverage-report">
+		<!--
+			Generate an summary XML file containing the coverage data using
+			the "srcdir" attribute.
+		-->
+		<cobertura-report srcdir="${src.dir}" destdir="${coverage.summaryxml.dir}" format="summaryXml" />
+	</target>
+
+	<target name="alternate-coverage-report">
+		<!--
+			Generate a series of HTML files containing the coverage
+			data in a user-readable form using nested source filesets.
+		-->
+		<cobertura-report destdir="${coverage.html.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.java"/>
+			</fileset>
+		</cobertura-report>
+	</target>
+
+	<target name="clean" description="Remove all files created by the build/test process.">
+		<delete dir="${classes.dir}" />
+		<delete dir="${instrumented.dir}" />
+		<delete dir="${reports.dir}" />
+		<delete file="cobertura.log" />
+		<delete file="cobertura.ser" />
+	</target>
+
+	<target name="coverage" depends="compile,instrument,test,coverage-report,summary-coverage-report,alternate-coverage-report" description="Compile, instrument ourself, run the tests and generate JUnit and coverage reports."/>
+
+</project>
